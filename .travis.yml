@@ -19,7 +19,7 @@ install:
   - conda info -a
 
   # Create test env
-  - conda create -q -n themis-ml-test-env python=$TRAVIS_PYTHON_VERSION --file environment_dev.yml
+  - conda env create -q -n themis-ml-test-env python=$TRAVIS_PYTHON_VERSION --file environment_dev.yml
   - source activate themis-ml-test-env
   - python setup.py install
 script: pytest
