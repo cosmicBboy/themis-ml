@@ -7,5 +7,8 @@ setup(
     author="Niels Bantilan",
     author_email="niels.bantilan@gmail.com",
     url="https://github.com/cosmicBboy/themis-ml",
-    packages=["themis_ml", ],
+    packages=[
+        "themis_ml",
+        "themis_ml.datasets",
+        ],
     )
