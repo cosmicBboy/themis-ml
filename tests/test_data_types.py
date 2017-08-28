@@ -21,6 +21,6 @@ def create_variables():
 def test_variable_map():
     variables = create_variables()
     variable_map = data_types.VariableMap(variables)
-    assert variable_map.variable_map.items() == [
-        (v.name, v) for v in variables]
+    assert list(variable_map.variable_map.items()) == \
+        [(v.name, v) for v in variables]
     assert variable_map.targets == ["target"]
