@@ -1,5 +1,7 @@
 # Themis ML
 
+[![Build Status](https://travis-ci.org/cosmicBboy/themis-ml.svg?branch=master)](https://travis-ci.org/cosmicBboy/themis-ml)
+
 `themis-ml` is a Python library built on top of `pandas` and `sklearn`that
 implements fairness-aware machine learning algorithms.
 
