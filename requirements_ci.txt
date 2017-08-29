@@ -1,5 +1,6 @@
 flake8
 numpy
 pandas
+pathlib2
 pytest
 scikit-learn
