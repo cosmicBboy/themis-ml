@@ -17,12 +17,10 @@ def _map_categorical_variables(series, variable_map):
     return series.map(lambda x: variable.categorical_dict[x])
 
 
-def _apply_data_map_and_preprocessor(df, variable_map, preprocessor):
+def _apply_data_map(df, variable_map, preprocessor):
     return (
         df
-        .apply(_map_categorical_variables, variable_map=variable_map)
-        .pipe(preprocessor)
-    )
+        .apply(_map_categorical_variables, variable_map=variable_map))
 
 
 def german_credit():
@@ -32,6 +30,6 @@ def german_credit():
     """
     data_path = Path(dirname(__file__)) / "data"
     # the data file is space-delimited.
-    return _apply_data_map_and_preprocessor(
+    return _apply_data_map(
         pd.read_csv(str(data_path / "german_credit.csv")),
         GERMAN_CREDIT_VARIABLE_MAP.variable_map, preprocess_german_credit_data)
