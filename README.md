@@ -23,8 +23,8 @@ of approved loans among white people.
 
 ## Measuring Discrimination
 
-- [ ] Mean difference
-- [ ] Normalized mean difference
+- [X] Mean difference
+- [X] Normalized mean difference
 - [ ] Consistency
 - [ ] Situation Test Score
 
@@ -49,4 +49,4 @@ of approved loans among white people.
 
 ## Datasets
 
-- [ ] German Credit Dataset
+- [X] German Credit Dataset
