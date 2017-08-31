@@ -38,10 +38,8 @@ def mean_difference(y, s):
     :returns: mean difference between advantaged group and disadvantaged group.
     :rtype: float
     """
-    y = np.array(y).astype(int)
-    s = np.array(s).astype(int)
-    check_binary(y)
-    check_binary(s)
+    y = check_binary(np.array(y).astype(int))
+    s = check_binary(np.array(s).astype(int))
     return _mean_difference(y, s)
 
 
@@ -71,9 +69,7 @@ def normalized_mean_difference(y, s):
     Zliobaite, I. (2015). A survey on measuring indirect discrimination in
     machine learning. arXiv preprint arXiv:1511.00148.
     """
-    y = np.array(y).astype(int)
-    s = np.array(s).astype(int)
-    check_binary(y)
-    check_binary(s)
+    y = check_binary(np.array(y).astype(int))
+    s = check_binary(np.array(s).astype(int))
     d_max = min(np.mean(y) / (1 - np.mean(s)), (1 - np.mean(y)) / np.mean(s))
     return _mean_difference(y, s) / float(d_max)

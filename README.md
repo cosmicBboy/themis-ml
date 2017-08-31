@@ -32,7 +32,7 @@ of approved loans among white people.
 
 ### Preprocessing
 
-- [ ] Massaging (Relabelling)
+- [X] Relabelling (Massaging)
 - [ ] Reweighting
 - [ ] Sampling
 
