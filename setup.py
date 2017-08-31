@@ -10,5 +10,6 @@ setup(
     packages=[
         "themis_ml",
         "themis_ml.datasets",
+        "themis_ml.preprocessing",
         ],
     )
