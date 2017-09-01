@@ -43,7 +43,7 @@ of approved loans among white people.
 
 ### Postprocessing
 
-- [ ] Reject Option Classification
+- [X] Reject Option Classification
 - [ ] Discrimination-aware Ensemble Classification
 
 
