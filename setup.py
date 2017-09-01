@@ -11,5 +11,6 @@ setup(
         "themis_ml",
         "themis_ml.datasets",
         "themis_ml.preprocessing",
+        "themis_ml.linear_model"
         ],
     )
