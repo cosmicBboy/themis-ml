@@ -6,25 +6,15 @@ import pytest
 
 from themis_ml.preprocessing.relabelling import Relabeller
 
-
-def X():
-    return np.array([range(10), range(11, 21)]).T
-
-
-def y():
-    return np.array([0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
-
-
-def s():
-    return np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
+from conftest import create_linear_X, create_y, create_s
 
 
 def test_relabeller_fit():
     """Test that relabeller fitting """
     relabeller = Relabeller()
-    X_input = X()
-    targets = y()
-    protected_class = s()
+    X_input = create_linear_X()
+    targets = create_y()
+    protected_class = create_s()
     # The formula to determine how many observations to promote/demote is
     # the number needed to make the proportion of positive labels equal
     # between the two groups. This proportion is rounded up.
@@ -42,24 +32,25 @@ def test_relabeller_fit():
 def test_relabeller_transform():
     """Test that relabeller correctly relabels targets."""
     expected = np.array([[0, 0, 1, 1, 1, 0, 0, 0, 1, 1]])
-    assert (Relabeller().fit_transform(X(), y(), s=s()) == expected).all()
+    assert (Relabeller().fit_transform(
+        create_linear_X(), create_y(), s=create_s()) == expected).all()
 
 
 def test_fit_error():
     """Test fit method errors out."""
     # case: s array not the same length as y array
     with pytest.raises(ValueError):
-        Relabeller().fit(X(), y(), np.array([1, 0, 0, 1]))
+        Relabeller().fit(create_linear_X(), create_y(), np.array([1, 0, 0, 1]))
     # case: y targets are not a binary variable
     with pytest.raises(TypeError):
-        targets = y()
+        targets = create_y()
         targets[0] = 100
-        Relabeller().fit_transform(X(), targets, s())
+        Relabeller().fit_transform(create_linear_X(), targets, create_s())
     # case: s protected classes are not a binary variable
     with pytest.raises(TypeError):
-        s_classes = y()
+        s_classes = create_y()
         s_classes[0] = 100
-        Relabeller().fit_transform(X(), targets, s_classes)
+        Relabeller().fit_transform(create_linear_X(), targets, s_classes)
 
 
 def test_fit_transform_error():
@@ -68,6 +59,6 @@ def test_fit_transform_error():
     ValueError should occur when X input to transform method is not the same
     as the X input to fit method.
     """
-    X_input = X()
+    X_input = create_linear_X()
     with pytest.raises(ValueError):
-        Relabeller().fit(X_input, y(), s()).transform(X_input.T)
+        Relabeller().fit(X_input, create_y(), create_s()).transform(X_input.T)

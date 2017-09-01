@@ -86,6 +86,7 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
         self.binary_residual_type = _BinaryResidualTypes[binary_residual_type]
 
     def fit(self, X, y, s):
+        """Fit model."""
         X, y = check_X_y(X, y)
         y = check_binary(y)
         s = check_binary(np.array(s).astype(int))
@@ -164,8 +165,8 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
     def predict(self, X, s):
         """Generate predicted labels."""
         X = self._check_fitted(X)
-        predict_residuals = self._compute_residuals_on_predict(X, s)
-        return self.target_estimator_.predict(predict_residuals)
+        return self.target_estimator_.predict(
+            self._compute_residuals_on_predict(X, s))
 
     def predict_proba(self, X, s):
         """Generate predicted probabilities."""

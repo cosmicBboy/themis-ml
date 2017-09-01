@@ -6,57 +6,30 @@ import pytest
 from themis_ml.linear_model import counterfactually_fair_models
 from themis_ml.checks import is_binary, is_continuous
 
-SEED = 10
+from conftest import create_random_X, create_y, create_s
+
+# random_X_data fixture is in conftest.py
 
 
-@pytest.fixture
-def data():
-    return {
-        "bin": create_binary_X(),
-        "cont": create_continuous_X()}
-
-
-def create_X(X_data_):
-    return np.concatenate([
-        X_data_["bin"], X_data_["cont"],
-        X_data_["bin"], X_data_["cont"]], axis=1)
-
-
-def create_binary_X():
-    np.random.seed(SEED)
-    return np.random.randint(0, 2, (10, 3))
-
-
-def create_continuous_X():
-    np.random.seed(SEED)
-    return np.random.randint(0, 100, (10, 3))
-
-
-def create_y():
-    return np.array([0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
-
-
-def create_s():
-    return np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
-
-
-def test_get_binary_X_index(data):
-    X = create_X(data)
-    expected = np.concatenate([data["bin"], data["bin"]], axis=1)
+def test_get_binary_X_index(random_X_data):
+    X = create_random_X(random_X_data)
+    expected = np.concatenate([
+        random_X_data["bin"], random_X_data["bin"]], axis=1)
     binary_index = counterfactually_fair_models._get_binary_X_index(X)
     assert (X[:, binary_index] == expected).all()
 
 
-def test_get_continuous_X(data):
-    X = create_X(data)
-    expected = np.concatenate([data["cont"], data["cont"]], axis=1)
+def test_get_continuous_X(random_X_data):
+    X = create_random_X(random_X_data)
+    expected = np.concatenate([
+        random_X_data["cont"], random_X_data["cont"]], axis=1)
     continuous_index = counterfactually_fair_models._get_continuous_X_index(X)
     assert (X[:, continuous_index] == expected).all()
 
 
-def test_fit_predict(data):
+def test_fit_predict(random_X_data):
     """Test happy path of LinearACFClassifier `fit` and `predict` methods."""
-    X = create_X(data)
+    X = create_random_X(random_X_data)
     y = create_y()
     s = create_s()
     for residual_type in ["pearson", "deviance", "absolute"]:
@@ -72,9 +45,9 @@ def test_fit_predict(data):
         assert min(lin_acf_pred_proba) > 0
 
 
-def test_predict_value_error(data):
+def test_predict_value_error(random_X_data):
     """Raise ValueError if X doesn't have expected number of variables."""
-    X = create_X(data)
+    X = create_random_X(random_X_data)
     s = create_s()
     lin_acf = counterfactually_fair_models.LinearACFClassifier()
     lin_acf.fit(X, create_y(), s)
@@ -84,7 +57,7 @@ def test_predict_value_error(data):
         lin_acf.predict_proba(X[:, 5], s)
 
 
-def test_invalid_binary_residual_type(data):
+def test_invalid_binary_residual_type(random_X_data):
     with pytest.raises(ValueError):
         counterfactually_fair_models.LinearACFClassifier(
             binary_residual_type="foobar")
