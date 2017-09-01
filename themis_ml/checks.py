@@ -8,7 +8,6 @@ def check_binary(x):
         raise ValueError("%s must be a binary variable" % x)
     return x
 
-
 def check_continuous(x):
     if not is_continuous(x):
         raise ValueError("%s must be a continuous variable" % x)

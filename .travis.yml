@@ -19,4 +19,3 @@ install:
   - conda info -a
   - chmod ugo+x ./ci_tests.sh
 script: ./ci_tests.sh
-
