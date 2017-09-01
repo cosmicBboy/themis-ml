@@ -17,5 +17,8 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-script: make ci-tests
+
+  # Create test env
+  - make ci-env
+script: make tests
 
