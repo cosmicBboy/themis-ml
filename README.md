@@ -38,7 +38,7 @@ of approved loans among white people.
 
 ### Model Estimation
 
-- [ ] Additive Counterfactually Fair Estimator
+- [X] Additive Counterfactually Fair Estimator
 - [ ] Prejudice Remover Regularized Estimator
 
 ### Postprocessing
