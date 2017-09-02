@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.metrics} \PYG{k+kn}{import} \PYG{p}{(}
+    \PYG{n}{mean\PYGZus{}difference}\PYG{p}{,} \PYG{n}{normalized\PYGZus{}mean\PYGZus{}difference}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} compare group\PYGZhy{}level discrimination in true}
+\PYG{c+c1}{\PYGZsh{} labels and predicted labels}
+\PYG{n}{md\PYGZus{}y\PYGZus{}true} \PYG{o}{=} \PYG{n}{mean\PYGZus{}difference}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{md\PYGZus{}y\PYGZus{}pred} \PYG{o}{=} \PYG{n}{mean\PYGZus{}difference}\PYG{p}{(}\PYG{n}{pred}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{md\PYGZus{}y\PYGZus{}pred} \PYG{o}{\PYGZhy{}} \PYG{n}{md\PYGZus{}y\PYGZus{}true}
+
+\PYG{n}{norm\PYGZus{}md\PYGZus{}y\PYGZus{}true} \PYG{o}{=} \PYG{n}{norm\PYGZus{}mean\PYGZus{}difference}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{norm\PYGZus{}md\PYGZus{}y\PYGZus{}pred} \PYG{o}{=} \PYG{n}{norm\PYGZus{}mean\PYGZus{}difference}\PYG{p}{(}\PYG{n}{pred}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{norm\PYGZus{}md\PYGZus{}y\PYGZus{}pred} \PYG{o}{\PYGZhy{}} \PYG{n}{norm\PYGZus{}md\PYGZus{}y\PYGZus{}true}
+\end{Verbatim}

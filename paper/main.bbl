@@ -1,0 +1,107 @@
+\begin{thebibliography}{10}
+
+\bibitem{o2017weapons}
+C.~O'Neil, {\em Weapons of math destruction: How big data increases inequality
+  and threatens democracy}.
+\newblock Broadway Books, 2017.
+
+\bibitem{yoshimura2006decision}
+M.~Yoshimura, Y.~Fujimi, K.~Izui, and S.~Nishiwaki, ``Decision-making support
+  system for human resource allocation in product development projects,'' {\em
+  International Journal of Production Research}, vol.~44, no.~5, pp.~831--848,
+  2006.
+
+\bibitem{montgomery2000evaluation}
+A.~A. Montgomery, T.~Fahey, T.~J. Peters, C.~MacIntosh, and D.~J. Sharp,
+  ``Evaluation of computer based clinical decision support system and risk
+  chart for management of hypertension in primary care: randomised controlled
+  trial,'' {\em Bmj}, vol.~320, no.~7236, pp.~686--690, 2000.
+
+\bibitem{barnett1987dxplain}
+G.~O. Barnett, J.~J. Cimino, J.~A. Hupp, and E.~P. Hoffer, ``Dxplain: an
+  evolving diagnostic decision-support system,'' {\em Jama}, vol.~258, no.~1,
+  pp.~67--74, 1987.
+
+\bibitem{mysiak2005towards}
+J.~Mysiak, C.~Giupponi, and P.~Rosato, ``Towards the development of a decision
+  support system for water resource management,'' {\em Environmental Modelling
+  \& Software}, vol.~20, no.~2, pp.~203--214, 2005.
+
+\bibitem{kusner2017counterfactual}
+M.~J. Kusner, J.~R. Loftus, C.~Russell, and R.~Silva, ``Counterfactual
+  fairness,'' {\em arXiv preprint arXiv:1703.06856}, 2017.
+
+\bibitem{kamiran2012data}
+F.~Kamiran and T.~Calders, ``Data preprocessing techniques for classification
+  without discrimination,'' {\em Knowledge and Information Systems}, vol.~33,
+  no.~1, pp.~1--33, 2012.
+
+\bibitem{kamishima2012fairness}
+T.~Kamishima, S.~Akaho, H.~Asoh, and J.~Sakuma, ``Fairness-aware classifier
+  with prejudice remover regularizer,'' {\em Machine Learning and Knowledge
+  Discovery in Databases}, pp.~35--50, 2012.
+
+\bibitem{kamiran2012decision}
+F.~Kamiran, A.~Karim, and X.~Zhang, ``Decision theory for discrimination-aware
+  classification,'' in {\em Data Mining (ICDM), 2012 IEEE 12th International
+  Conference on}, pp.~924--929, IEEE, 2012.
+
+\bibitem{zemel2013learning}
+R.~Zemel, Y.~Wu, K.~Swersky, T.~Pitassi, and C.~Dwork, ``Learning fair
+  representations,'' in {\em Proceedings of the 30th International Conference
+  on Machine Learning (ICML-13)}, pp.~325--333, 2013.
+
+\bibitem{zafar2017fairness}
+M.~B. Zafar, I.~Valera, M.~Gomez~Rodriguez, and K.~P. Gummadi, ``Fairness
+  constraints: Mechanisms for fair classification,'' {\em arXiv preprint
+  arXiv:1507.05259}, 2017.
+
+\bibitem{dwork2012fairness}
+C.~Dwork, M.~Hardt, T.~Pitassi, O.~Reingold, and R.~Zemel, ``Fairness through
+  awareness,'' in {\em Proceedings of the 3rd Innovations in Theoretical
+  Computer Science Conference}, pp.~214--226, ACM, 2012.
+
+\bibitem{zliobaite2015survey}
+I.~Zliobaite, ``A survey on measuring indirect discrimination in machine
+  learning,'' {\em arXiv preprint arXiv:1511.00148}, 2015.
+
+\bibitem{bache2013uci}
+K.~Bache and M.~Lichman, ``Uci machine learning repository
+  [http://archive.ics.uci.edu/ml]. irvine, ca: University of california, school
+  of information and computer science. begleiter, h. neurodynamics laboratory.
+  state university of new york health center at brooklyn. ingber, l.(1997).
+  statistical mechanics of neocortical interactions: Canonical momenta
+  indicatros of electroencephalography,'' {\em Physical Review E}, vol.~55,
+  pp.~4578--4593, 2013.
+
+\bibitem{barocas2016big}
+S.~Barocas and A.~D. Selbst, ``Big data's disparate impact,'' 2016.
+
+\bibitem{buitinck2013api}
+L.~Buitinck, G.~Louppe, M.~Blondel, F.~Pedregosa, A.~Mueller, O.~Grisel,
+  V.~Niculae, P.~Prettenhofer, A.~Gramfort, J.~Grobler, {\em et~al.}, ``Api
+  design for machine learning software: experiences from the scikit-learn
+  project,'' {\em arXiv preprint arXiv:1309.0238}, 2013.
+
+\bibitem{ng2004feature}
+A.~Y. Ng, ``Feature selection, l 1 vs. l 2 regularization, and rotational
+  invariance,'' in {\em Proceedings of the twenty-first international
+  conference on Machine learning}, p.~78, ACM, 2004.
+
+\bibitem{ribeiro2016should}
+M.~T. Ribeiro, S.~Singh, and C.~Guestrin, ``Why should i trust you?: Explaining
+  the predictions of any classifier,'' in {\em Proceedings of the 22nd ACM
+  SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  pp.~1135--1144, ACM, 2016.
+
+\bibitem{bischl2016mlr}
+B.~Bischl, M.~Lang, L.~Kotthoff, J.~Schiffner, J.~Richter, E.~Studerus,
+  G.~Casalicchio, and Z.~M. Jones, ``mlr: Machine learning in r,'' {\em Journal
+  of Machine Learning Research}, vol.~17, no.~170, pp.~1--5, 2016.
+
+\bibitem{park2007l1}
+M.~Y. Park and T.~Hastie, ``L1-regularization path algorithm for generalized
+  linear models,'' {\em Journal of the Royal Statistical Society: Series B
+  (Statistical Methodology)}, vol.~69, no.~4, pp.~659--677, 2007.
+
+\end{thebibliography}

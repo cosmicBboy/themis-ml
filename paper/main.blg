@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: ieeetr.bst
+Database file #1: references.bib
+Warning--empty journal in barocas2016big
+You've used 20 entries,
+            1876 wiz_defined-function locations,
+            599 strings with 7818 characters,
+and the built_in function-call counts, 5815 in all, are:
+= -- 558
+> -- 259
+< -- 0
++ -- 94
+- -- 74
+* -- 424
+:= -- 834
+add.period$ -- 21
+call.type$ -- 20
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 21
+duplicate$ -- 300
+empty$ -- 540
+format.name$ -- 74
+if$ -- 1400
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 21
+newline$ -- 64
+num.names$ -- 20
+pop$ -- 72
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 191
+stack$ -- 0
+substring$ -- 391
+swap$ -- 119
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 60
+width$ -- 22
+write$ -- 195
+(There was 1 warning)

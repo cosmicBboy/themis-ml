@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.postprocessing} \PYG{k+kn}{import} \PYG{n}{DAEnsembleClassifier}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.linear\PYGZus{}model} \PYG{k+kn}{import} \PYG{n}{LogisticRegression}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.tree} \PYG{k+kn}{import} \PYG{n}{DecisionTreeClassifier}
+
+\PYG{c+c1}{\PYGZsh{} use logistic regression and decision trees}
+\PYG{n}{dae\PYGZus{}clf} \PYG{o}{=} \PYG{n}{DAEnsembleClassifier}\PYG{p}{(}
+    \PYG{n}{estimators}\PYG{o}{=}\PYG{p}{[}\PYG{n}{LogisticRegression}\PYG{p}{(),}
+                \PYG{n}{DecisionTreeClassifier}\PYG{p}{()])}
+
+\PYG{c+c1}{\PYGZsh{} fit the models and generate predictions}
+\PYG{n}{dae\PYGZus{}clf}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{dae\PYGZus{}clf}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\end{Verbatim}

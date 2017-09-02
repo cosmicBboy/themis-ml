@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.linear\PYGZus{}model} \PYG{k+kn}{import} \PYG{n}{LogisticRegressionPRR}
+
+\PYG{c+c1}{\PYGZsh{} use L2\PYGZhy{}norm regularization and prejudice index as}
+\PYG{c+c1}{\PYGZsh{} the discrimination penalizer}
+\PYG{n}{lr\PYGZus{}prr} \PYG{o}{=} \PYG{n}{LogisticRegressionPRR}\PYG{p}{(}
+    \PYG{n}{penalty}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}L2\PYGZdq{}}\PYG{p}{,} \PYG{n}{discrimination\PYGZus{}penalty}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}PI\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} fit the models}
+\PYG{n}{lr\PYGZus{}prr}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\end{Verbatim}

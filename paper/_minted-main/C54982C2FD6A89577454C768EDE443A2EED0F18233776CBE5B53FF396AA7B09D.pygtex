@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.metrics} \PYG{k+kn}{import} \PYG{p}{(}
+    \PYG{n}{consistency}\PYG{p}{,} \PYG{n}{situation\PYGZus{}test\PYGZus{}score}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} compare individual\PYGZhy{}level discrimination}
+\PYG{c+c1}{\PYGZsh{} in true labels and predicted labels}
+\PYG{n}{c\PYGZus{}true} \PYG{o}{=} \PYG{n}{consistency}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{c\PYGZus{}pred} \PYG{o}{=} \PYG{n}{consistency}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{c\PYGZus{}pred} \PYG{o}{\PYGZhy{}} \PYG{n}{c\PYGZus{}true}
+
+\PYG{n}{sts\PYGZus{}true} \PYG{o}{=} \PYG{n}{situation\PYGZus{}test\PYGZus{}score}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{sts\PYGZus{}pred} \PYG{o}{=} \PYG{n}{situation\PYGZus{}test\PYGZus{}score}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\PYG{n}{sts\PYGZus{}pred} \PYG{o}{\PYGZhy{}} \PYG{n}{sts\PYGZus{}true}
+\end{Verbatim}

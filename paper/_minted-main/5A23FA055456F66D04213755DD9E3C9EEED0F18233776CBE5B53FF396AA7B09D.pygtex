@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.preprocess} \PYG{k+kn}{import} \PYG{p}{(}
+    \PYG{n}{UniformSample}\PYG{p}{,} \PYG{n}{PreferentialSample}\PYG{p}{)}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.linear\PYGZus{}model} \PYG{k+kn}{import} \PYG{n}{LogisticRegression}
+
+\PYG{c+c1}{\PYGZsh{} use logistic regression as the ranking algorithm}
+\PYG{n}{uniform\PYGZus{}sampler} \PYG{o}{=} \PYG{n}{UniformSample}\PYG{p}{()}
+\PYG{n}{preferential\PYGZus{}sampler} \PYG{o}{=} \PYG{n}{PreferentialSample}\PYG{p}{(}
+    \PYG{n}{ranker}\PYG{o}{=}\PYG{n}{LogisticRegression}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} obtain a new dataset with uniform sampling}
+\PYG{n}{uniform\PYGZus{}sampler}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{s\PYGZus{}train}\PYG{p}{)}
+\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s} \PYG{o}{=} \PYG{n}{uniform\PYGZus{}sampler}\PYG{o}{.}\PYG{n}{transform}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} obtain a new dataset with preferential sampling}
+\PYG{n}{preferential\PYGZus{}sampler}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{s\PYGZus{}train}\PYG{p}{)}
+\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s} \PYG{o}{=} \PYG{n}{preferential\PYGZus{}sampler}\PYG{o}{.}\PYG{n}{transform}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\end{Verbatim}

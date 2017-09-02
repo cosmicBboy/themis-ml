@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.linear\PYGZus{}model} \PYG{k+kn}{import} \PYG{n}{LinearACFClassifier}
+
+\PYG{c+c1}{\PYGZsh{} by default, LinearACFClassifier uses linear}
+\PYG{c+c1}{\PYGZsh{} regression as the continuous feature estimator}
+\PYG{c+c1}{\PYGZsh{} and logistic regression as the binary feature}
+\PYG{c+c1}{\PYGZsh{} estimator and target variable classifier}
+\PYG{n}{linear\PYGZus{}acf} \PYG{o}{=} \PYG{n}{LinearACFClassifier}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} fit the models}
+\PYG{n}{linear\PYGZus{}acf}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{s\PYGZus{}train}\PYG{p}{)}
+\end{Verbatim}

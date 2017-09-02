@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{from} \PYG{n+nn}{themis\PYGZus{}ml.preprocess} \PYG{k+kn}{import} \PYG{n}{Massage}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.linear\PYGZus{}model} \PYG{k+kn}{import} \PYG{n}{LogisticRegression}
+
+\PYG{c+c1}{\PYGZsh{} use logistic regression as the ranking algorithm}
+\PYG{n}{massager} \PYG{o}{=} \PYG{n}{Massage}\PYG{p}{(}\PYG{n}{ranker}\PYG{o}{=}\PYG{n}{LogisticRegression}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} obtain a new set of labels}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{massager}\PYG{o}{.}\PYG{n}{fit\PYGZus{}transform}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{s}\PYG{p}{)}
+\end{Verbatim}
