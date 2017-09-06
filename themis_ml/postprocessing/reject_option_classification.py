@@ -19,6 +19,9 @@ DEFAULT_ENSEMBLE_ESTIMATORS = [
 class SingleROClassifier(
         BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
 
+    S_ON_FIT = False
+    S_ON_PREDICT = True
+
     def __init__(self, estimator=LogisticRegression(), theta=0.1, demote=True):
         """Initialize Single Reject-Option Classifier.
 
