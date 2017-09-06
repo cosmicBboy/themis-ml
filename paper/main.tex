@@ -590,104 +590,120 @@ than that of the disadvantaged group.
   \end{tabularx}
 \end{table}
 
-\subsection{Measure and Mitigate Potentially Discriminatory Predictions}
-To assess the extent to which a model trained on these data mirrors these PD
-\emph{credit risk} distributions, we use the following experimental procedure:
+\subsection{Experimental Procedure}
 
-\begin{enumerate}
-  \item \textbf{Models:} LogisticRegression, DecisionTree, RandomForest
-  \item train model using leave-one-out 10-fold cross validation
-  \item measure PD predictions in a machine learning algorithm's predictions.
-  \item reduce PD predictions using fairness-aware techniques.
-  \item diagnose the fairness-utility tradeoff in a particular data context.
-\end{enumerate}
-train a logistic regression model using
-leave-one-out 10-fold cross validation, generate predictions on the training and
-test folds, and compute \emph{AUC} and \emph{mean difference} for each
-train-test partition. We then compute the mean of these performance metrics
-over a 1-dimensional grid of L2 regularization hyperparemeter settings.
+To assess the extent to which (i) a model trained on these data mirrors these PD
+\emph{credit risk} distributions and (ii) fairness-aware techniques can reduce
+these methods, we used \emph{mean difference} to measure model fairness and
+\emph{AUC} to measure model utility. For this experiment we specify five
+conditions:
+
+\begin{itemize}
+  \item Baseline (\emph{B}): Train a model on all available input variables in
+        the German Credit dataset, including protected attributes.
+  \item Remove Protected Attribute (\emph{RPA}): Train a model on input variables
+        without protected attributes. This is the naive fairness-aware approach.
+  \item Relabel Target Variable (\emph{RTV}): Train a model using the
+        \emph{relabelling} fairness-aware method.
+  \item Counterfactually Fair Model (\emph{CFM}): Train a model using the
+        \emph{additive counterfactually fair} method.
+  \item Reject-option Classification (\emph{ROC}): Train a model using the
+        \emph{reject-option classification} method.
+\end{itemize}
+
+For each of these conditions, we train LogisticRegression, DecisionTree, and
+RandomForest model types using 10-fold cross validation, generate train and test
+predictions, and compute \emph{AUC} and \emph{mean difference} metrics for each
+train-test pair. We then compute the mean these metrics for each condition and
+model type.
+
+\subsection{Measuring and Mitigating Potentially Discriminatory Predictions}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=8.5cm]{IMG/fairness_aware_comparison.png}
 \caption{
-  \textbf{Comparison of Fairness-aware Methods}
-  % are shown for each of the three protected class contexts: \emph{female},
-  % \emph{foreign worker}, and \emph{age below 25}. Left panels show training and
-  % test \emph{AUC} scores (higher is better) of an L2-regularized Logistic
-  % Regression model. The \(C\) parameter is the inverse regularization strength,
-  % meaning that smaller values increase the regularization penalty. Model
-  % complexity increases as \(C\) increases, leading to the overfitting regime at
-  % \(C > 10^{-1}\). Right panels show training and test \emph{mean difference}
-  % scores (lower is better).
-  }
+  \textbf{Comparison of Fairness-aware Methods} using LogisticRegression,
+  DecisionTree, and RandomForest as base estimators as measured by AUC and
+  mean difference evaluated on test set predictions.}
 \label{figure-1-comparison-fa-methods}
 \end{figure}
+
+\textbf{Figure 1} suggests that in the case of LogisticRegression, the baseline
+model \emph{B} does indeed mirror the PD patterns found in the true target
+variable. Furthermore, each of the fairness-aware method appear to have
+the desired effect of reducing \emph{mean difference}, but to variance degrees
+depending on the method and protected attribute. In the \emph{female} context,
+where there appear to be the least PD (mean difference of \(7.48\%\)), the
+reductive effect of the fairness-aware methods does not appear to be as
+large as in the \emph{foreign worker} and \emph{age below 25} contexts.
+
+The lack of reduction in \emph{mean difference} between \emph{B} and \emph{RPA}
+with respect to the \emph{foreign worker} protected attribute and
+LogisticRegression model illustrates the observation made by
+\cite{kusner2017counterfactual} that removing protected attributes from the
+training data does not necessarly prevent the learning algorithm address from
+mirroring PD patterns in the data.
+
+However, as the sizeable reduction in \emph{mean difference} between \emph{B}
+and \emph{RPA} with respect to the \emph{age below 25} protected attribute and
+LogisticRegression model shows, removing protected attributes can make models
+more fair while also retaining predictive power.
+
+An interesting thing to note here is that the \emph{additive counterfactually
+fair} method actually increases \emph{mean difference} for DecisionTrees and
+RandomForests across all protected attribute contexts. A possible explanation
+behind this observation is that certain assumptions made by the \emph{additive
+counterfactually fair} method are not suitable for non-linear learning
+algorithms, but this is an open question worth future inquiry.
+
+\subsection{The Fairness-utility Tradeoff}
+
+Just as the bias-variance tradeoff has become a useful diagnostic tool to guide
+machine learning research and application, the fairness-utility tradeoff can
+help machine learning practitioners and researchers understand how effective
+particular fairness-aware methods might be in particular data contexts.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=8.5cm]{IMG/fairness_utility_tradeoff.png}
 \caption{
-  \textbf{Diagnosing the Fairness-utility Tradeoff}
-  % are shown for each of the three protected class contexts: \emph{female},
-  % \emph{foreign worker}, and \emph{age below 25}. Left panels show training and
-  % test \emph{AUC} scores (higher is better) of an L2-regularized Logistic
-  % Regression model. The \(C\) parameter is the inverse regularization strength,
-  % meaning that smaller values increase the regularization penalty. Model
-  % complexity increases as \(C\) increases, leading to the overfitting regime at
-  % \(C > 10^{-1}\). Right panels show training and test \emph{mean difference}
-  % scores (lower is better).
+  \textbf{Correlation between AUC and Mean Difference} for each experimental
+  condition, across all model types (LogisticRegression, DecisionTree,
+  RandomForest). 95\% confidence intervals are provided for the pearson \(R\)
+  correlation metric.
   }
 \label{figure-2-fairness-utility-tradeoff}
 \end{figure}
 
+\textbf{Figure 2} demonstrates an initial attempt at visualizing the the
+fairness-utility tradeoff, in this case as measured by \emph{mean difference}
+and \emph{AUC} respectively. These results suggest that the relationship between
+fairness and utility is noisy, however there does seem to be a positive
+correlation between \emph{mean difference} and \emph{AUC}, or a negative
+correlation between fairness and utility (since lower scores are better
+for \emph{mean difference} and higher scores are better for \emph{AUC}).
 
-% \begin{figure}
-%   \centering
-%   \begin{subfigure}[t]{1in}
-%     \centering
-%     \includegraphics[width=6cm]{IMG/logistic_regression_validation_curve.png}
-%     \caption{Arabic numerals}\label{fig:1a}
-%   \end{subfigure}
-%   \quad
-%   \begin{subfigure}[t]{1in}
-%     \centering
-%     \includegraphics[width=3cm]{IMG/logistic_regression_fairness_utility_tradeoff.png}
-%     \caption{Arabic numerals}\label{fig:1b}
-%   \end{subfigure}
-%   \caption{Capital Roman numerals}\label{fig:1}
-% \end{figure}
-
-In the machine learning field we often talk about the bias-variance tradeoff,
-which refers to the observation that simple models exhibit high bias and low
-variance, i.e. they ``underfit'' the data by consistently performing poorly on
-both the test and training set across many instantiations of the model.
-
-However, as model complexity increases (for example, by introducing first order
-polynomial terms into space), models begin to exhibit low bias and high
-variance. This means that they ``overfit'' the data by performing well on the
-training set but poorly on the test set.
-
-In practice, we often seek to find the optimal model specification that
-maximizes/minimizes test set performance/error but also minimizes the gap
-between test set and training set performance/error.
-
-A concept that is related but distinct from the bias-variance tradeoff is the
-fairness-utility tradeoff, which is the observation that fair models tend to
-make less accurate predictions \cite{kamiran2012data, dwork2012fairness}. Just
-as the bias-variance tradeoff has become a useful diagnostic tool to guide
-machine learning research and application, the fairness-utility tradeoff can
-help .
+Depending on one's use cases, analyses like this might be prove to be a useful
+guide for figuring out what kinds of methods are robust in the sense that
+one can reduce PD predictions with little to no adverse impact on predictive
+performance.
 
 \section{Discussion}
 
-In this paper, we describe FMLIs in the classification context where we consider
-only a single binary protected class variable. More work needs to be done to
-generalize FMLIs to the multi-classification, regression, and multiple protected
-classes contexts. Additionally, little is understood about the question of the
-composability of fairness-aware methods. In other words, when different
-techniques are used together in sequence, are the resulting discrimination
-reductions additive or otherwise?
+In this paper, we describe and evaluate an FMLI in the classification context
+where we consider only a single binary protected class variable and a binary
+target variable. More work needs to be done to generalize FMLIs to the multi-
+classification, regression, and multiple protected classes contexts.
+
+Furthermore, many basic questions about model tuning, model evaluation, and
+model selection in relation to the fairness-utility tradeoff remain open. For
+instance, what might be some reasonable ways to aggregate utility and
+performance metrics in order to find the optimal set of hyperparameters?
+Additionally, little is understood about the question of the composability of
+fairness-aware methods. In other words, when different techniques are used
+together in sequence, are the resulting discrimination reductions additive or
+otherwise?
 
 Future technical work might also extend the FMLI specification to include
 techniques like Locally Interpretable Model-Agnostic Explanations
