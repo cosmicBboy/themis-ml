@@ -4,7 +4,10 @@
 \usepackage{hanging}
 \usepackage{mdframed}
 \usepackage{minted}
+\usepackage{subcaption}
 \usepackage{tabularx}
+\usepackage[labelfont=bf]{caption}
+\captionsetup{labelfont = bf}
 
 % solution for getting around this issue to use the titlesec package:
 % https://tex.stackexchange.com/questions/110546/spacing-below-section-title
@@ -18,6 +21,8 @@
 \makeatother
 \usepackage{titlesec}
 \let\subparagraph\relax % You don't want to use \subparagraph
+
+\setlength{\parskip}{1em}
 
 \begin{document}
 
@@ -118,18 +123,17 @@ extend for their own purposes.
 \section{Bias and Discrimination}
 Colloquially, bias is simply a preference for or against something, e.g.,
 preferring for vanilla over chocolate ice cream. While this definition is
-intuitive, there are two types of bias that are less obvious and important to
-highlight in this paper: algorithmic and machine learning bias.
+intuitive, here we explicitly define algorithmic bias as a form of bias that
+occurs mathematical rules favors one set of attributes over others in relation
+to some target variable, like ``approve'' or ``deny'' a loan.
 
-Algorithmic bias is when a set of mathematical rules favors one set of
-attributes over others in relation to some target variable, like ``approve'' or
-``deny'' a loan. Machine learning bias is when a trained model systematically
-generates predictions that favor one group over another in relation to some
-set of attributes, e.g., education, and some target variable, e.g., ``default
-on credit''. While these definitions of bias are amoral, discrimination is in
-essence moral, occurring when an action is based on biases resulting in the
-unfair treatment of people. We define fairness as the inverse of
-discrimination, meaning that a ``fairness-aware'' model is one that produces
+Algorithmic bias in machine learning models can occur when a trained model
+systematically generates predictions that favor one group over another in
+relation to some set of attributes, e.g., education, and some target variable,
+e.g., ``default on credit''. While the above definition of bias is amoral,
+discrimination is in essence moral, occurring when an action is based on biases
+resulting in the unfair treatment of people. We define fairness as the inverse
+of discrimination, meaning that a ``fairness-aware'' model is one that produces
 non-discriminatory predictions.
 
 Bias can lead to either direct (intended/explicit) or indirect
@@ -172,7 +176,7 @@ an FMLI.
   \caption{A Simple Classification Pipeline}
   \renewcommand{\arraystretch}{1.75}
   \small\noindent\begin{tabularx}{\linewidth}{l X X}
-    \textbf{API Interface} & \textbf{Function} & \textbf{E\(X_a\)mples} \\
+    \textbf{API Interface} & \textbf{Function} & \textbf{Examples} \\
     \hline
     \textbf{Transformer} &
       \emph{Preprocess} raw data for model training. &
@@ -465,9 +469,9 @@ between classifiers, the larger the reduction in discrimination.
 \subsection{Scorer}
 
 The Scorer interface is concerned with measuring the degree to which data or
-predictions are discriminatory. Themis-ml implements two methods for measuring
-group-level discrimination and two methods for measuring individual-level
-discrimination.
+predictions are potentially discriminatory (PD). Themis-ml implements two
+methods for measuring group-level discrimination and two methods for measuring
+individual-level discrimination.
 
 In the context of measuring group-level discrimination,
 \cite{zliobaite2015survey} describes mean difference and normalized mean
@@ -476,9 +480,9 @@ and \(p(d \cup y^{+})\). Values range from -1 to 1, where -1 is the reverse-
 discrimination case (all \(X_a\) have \(y^{-}\) labels and all \(X_d\) members
 have \(y^{+}\) labels) and 1 is the fully discriminatory case (all \(X_a\) have
 \(y^{+}\) labels and all \(X_d\) have \(y^{-}\) labels). Normalized mean
-difference scales these values to 0 and 1 based on the maximum possible
-discrimination in a dataset given the rate of positive labels
-\cite{zliobaite2015survey}.
+difference, which also takes on values between -1 and 1, scales these values
+based on the maximum possible discrimination in a dataset given the rate of
+positive label \cite{zliobaite2015survey}.
 
 \begin{minted}[mathescape,
                gobble=2,
@@ -534,11 +538,146 @@ discrimination \cite{zliobaite2015survey}.
 
 \section{Evaluating Themis-ml}
 
-\emph{\textbf{Work in progress}. Using the German Credit dataset, we evaluate
-the efficacy of themis-ml in reducing discriminatory predictions. We do this by
-comparing the performance of various fairness-aware techniques with a standard
-``fairness- unaware'' classification system, as measured by the four
-discrimination measures described above.}
+In this section we use the German Credit dataset \cite{bache2013uci}, mean
+difference as the ``fairness'' measure, and area under the ROC curve (AUC) as
+the ``utility'' measure. The following analysis is by no means meant to be a
+comprehensive investigation of all of the possible workflows that themis-ml
+enables. Rather, it is intended to demonstrate the potential of themis-ml as a
+tool that facilites fairness-aware machine learning by enabling the user to:
+
+\begin{enumerate}
+  \item measure PD target label distributions in the training data.
+  \item measure PD predictions in a machine learning algorithm's predictions.
+  \item reduce PD predictions using fairness-aware techniques.
+  \item diagnose the fairness-utility tradeoff in a particular data context.
+\end{enumerate}
+
+The German Credit dataset classifies 1000 anonymized individuals as having
+``good'' and ``bad'' credit risks as part of a bank loan application, which we
+encode as (\(1\)) and (\(0\)) respectively to define the \emph{credit risk}
+target variable.
+
+Each individual is associated with twenty attributes such as the purpose of the
+loan, employment status, and other personal information. We begin the analysis
+by extracting three protected class attributes --- \emph{female},
+\emph{foreign worker}, and \emph{age below 25} --- and encode them as binary
+variables such that the putatively disadvantaged group is encoded as \(1\) and
+the advantaged group is encoded as \(0\) (the advantaged group would be
+\emph{male}, \emph{citizen worker}, and \emph{age above 25} respectively).
+
+Using the \textbf{Scorer} interface, we measure PD patterns with respect to
+\emph{credit risk} and each of the protected classes defined above using the
+\emph{mean difference} and \emph{normalized mean difference} metrics.
+
+\textbf{Table 3} shows the PD distribution of ``good'' and ``bad'' credit risks
+with respect to the protected attributes \emph{female}, \emph{foreign
+worker}, and \emph{age below 25}. The mean difference (md) and normalized mean
+difference (nmd) scores greater than zero suggests that the probability
+of being classified as having ``good'' risk is higher in the advantaged group
+than that of the disadvantaged group.
+
+\begin{table}
+  \caption{Potentially discriminatory target variable distribution.
+    \emph{md} = mean difference, \emph{nmd} = normalized mean difference.}
+  \renewcommand{\arraystretch}{1.75}
+  \small\noindent\begin{tabularx}{\linewidth}{l|X|X|X|X}
+    \textbf{protected class} & \textbf{md (\%)} & \textbf{md 95\% CI} &
+      \textbf{nmd (\%)} & \textbf{nmd 95\% CI}\\
+    \hline
+    \textbf{female} & 7.48 & (1.35, 13.61) & 7.73 & (1.39, 14.06) \\
+    \textbf{foreign worker} & 19.93 & (4.91, 34.94) & 63.96 & (15.76, 112.17)\\
+    \textbf{age below 25} & 14.94 & (7.76, 22.13) & 17.29 & (8.97, 25.61)\\
+  \end{tabularx}
+\end{table}
+
+\subsection{Measure and Mitigate Potentially Discriminatory Predictions}
+To assess the extent to which a model trained on these data mirrors these PD
+\emph{credit risk} distributions, we use the following experimental procedure:
+
+\begin{enumerate}
+  \item \textbf{Models:} LogisticRegression, DecisionTree, RandomForest
+  \item train model using leave-one-out 10-fold cross validation
+  \item measure PD predictions in a machine learning algorithm's predictions.
+  \item reduce PD predictions using fairness-aware techniques.
+  \item diagnose the fairness-utility tradeoff in a particular data context.
+\end{enumerate}
+train a logistic regression model using
+leave-one-out 10-fold cross validation, generate predictions on the training and
+test folds, and compute \emph{AUC} and \emph{mean difference} for each
+train-test partition. We then compute the mean of these performance metrics
+over a 1-dimensional grid of L2 regularization hyperparemeter settings.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8.5cm]{IMG/fairness_aware_comparison.png}
+\caption{
+  \textbf{Comparison of Fairness-aware Methods}
+  % are shown for each of the three protected class contexts: \emph{female},
+  % \emph{foreign worker}, and \emph{age below 25}. Left panels show training and
+  % test \emph{AUC} scores (higher is better) of an L2-regularized Logistic
+  % Regression model. The \(C\) parameter is the inverse regularization strength,
+  % meaning that smaller values increase the regularization penalty. Model
+  % complexity increases as \(C\) increases, leading to the overfitting regime at
+  % \(C > 10^{-1}\). Right panels show training and test \emph{mean difference}
+  % scores (lower is better).
+  }
+\label{figure-1-comparison-fa-methods}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8.5cm]{IMG/fairness_utility_tradeoff.png}
+\caption{
+  \textbf{Diagnosing the Fairness-utility Tradeoff}
+  % are shown for each of the three protected class contexts: \emph{female},
+  % \emph{foreign worker}, and \emph{age below 25}. Left panels show training and
+  % test \emph{AUC} scores (higher is better) of an L2-regularized Logistic
+  % Regression model. The \(C\) parameter is the inverse regularization strength,
+  % meaning that smaller values increase the regularization penalty. Model
+  % complexity increases as \(C\) increases, leading to the overfitting regime at
+  % \(C > 10^{-1}\). Right panels show training and test \emph{mean difference}
+  % scores (lower is better).
+  }
+\label{figure-2-fairness-utility-tradeoff}
+\end{figure}
+
+
+% \begin{figure}
+%   \centering
+%   \begin{subfigure}[t]{1in}
+%     \centering
+%     \includegraphics[width=6cm]{IMG/logistic_regression_validation_curve.png}
+%     \caption{Arabic numerals}\label{fig:1a}
+%   \end{subfigure}
+%   \quad
+%   \begin{subfigure}[t]{1in}
+%     \centering
+%     \includegraphics[width=3cm]{IMG/logistic_regression_fairness_utility_tradeoff.png}
+%     \caption{Arabic numerals}\label{fig:1b}
+%   \end{subfigure}
+%   \caption{Capital Roman numerals}\label{fig:1}
+% \end{figure}
+
+In the machine learning field we often talk about the bias-variance tradeoff,
+which refers to the observation that simple models exhibit high bias and low
+variance, i.e. they ``underfit'' the data by consistently performing poorly on
+both the test and training set across many instantiations of the model.
+
+However, as model complexity increases (for example, by introducing first order
+polynomial terms into space), models begin to exhibit low bias and high
+variance. This means that they ``overfit'' the data by performing well on the
+training set but poorly on the test set.
+
+In practice, we often seek to find the optimal model specification that
+maximizes/minimizes test set performance/error but also minimizes the gap
+between test set and training set performance/error.
+
+A concept that is related but distinct from the bias-variance tradeoff is the
+fairness-utility tradeoff, which is the observation that fair models tend to
+make less accurate predictions \cite{kamiran2012data, dwork2012fairness}. Just
+as the bias-variance tradeoff has become a useful diagnostic tool to guide
+machine learning research and application, the fairness-utility tradeoff can
+help .
 
 \section{Discussion}
 
@@ -570,25 +709,6 @@ around the meaning of discrimination in different contexts. Since FMLIs are
 simply a tool to measure and mitigate formalized definitions of discrimination,
 it is important for all stakeholders to engage in an inclusive forum where
 everyone, especially disadvantaged social groups, can contribute.
-
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=4cm]{IMG/d4gx-2015-logo.png}
-% \caption{Conference logo for 2015 (PNG)}
-% \label{d4gx-logo-2015}
-% \end{figure}
-
-% \begin{figure*}
-%   \includegraphics[width=\textwidth]{IMG/d4gx-2015-logo.pdf}
-%   \caption{Same logo, full width.}
-% \end{figure*}
-
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=7cm]{IMG/d4gx-2015-logo.pdf}
-% \caption{Conference logo for 2015 (PDF)}
-% \label{d4gx-logo-2015}
-% \end{figure}
 
 \nocite{*}
 \bibliographystyle{ieeetr}

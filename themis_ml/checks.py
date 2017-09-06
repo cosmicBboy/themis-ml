@@ -21,3 +21,22 @@ def is_binary(x):
 
 def is_continuous(x):
     return not is_binary(x) and x.dtype in CONTINUOUS_DTYPES
+
+
+def s_is_needed_on_fit(estimator, s):
+    if getattr(estimator, "S_ON_FIT", False):
+        if s is None:
+            raise ValueError(
+                "Provide `s` arg when calling %s's `fit`" % estimator)
+        return True
+    return False
+
+
+def s_is_needed_on_predict(estimator, s):
+    if getattr(estimator, "S_ON_PREDICT", False):
+        if s is None:
+            raise ValueError(
+                "Provide `s` arg when calling %s's `predict`" %
+                estimator)
+        return True
+    return False

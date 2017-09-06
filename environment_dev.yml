@@ -27,6 +27,7 @@ dependencies:
 - jupyter=1.0.0=py27_3
 - jupyter_client=5.1.0=py27_0
 - jupyter_console=5.2.0=py27_0
+- jupyter_contrib_nbextensions=0.2.8=py27_1
 - jupyter_core=4.3.0=py27_0
 - markupsafe=1.0=py27_0
 - mccabe=0.6.1=py27_0
@@ -63,6 +64,7 @@ dependencies:
 - scandir=1.5=py27_0
 - scikit-learn=0.19.0=np113py27_0
 - scipy=0.19.1=np113py27_0
+- seaborn=0.8=py27_0
 - setuptools=27.2.0=py27_0
 - simplegeneric=0.8.1=py27_1
 - singledispatch=3.4.0.3=py27_0

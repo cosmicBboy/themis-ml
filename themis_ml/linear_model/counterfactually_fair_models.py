@@ -59,6 +59,8 @@ class _BinaryResidualTypes(Enum):
 class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
 
     VALID_BINARY_RESIDUAL_TYPES = [e.name for e in _BinaryResidualTypes]
+    S_ON_FIT = True
+    S_ON_PREDICT = True
 
     def __init__(self, target_estimator=LogisticRegression(),
                  continuous_estimator=LinearRegression(),
@@ -68,8 +70,8 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
 
         :param BaseEstimator target_estimator: A classifier for learning a
             function that maps to input residuals and target variable.
-        :param BaseEstimat0r linear_estimator: A regressor for computing the
-            residuals for continuous X inputs.
+        :param BaseEstimator continuous_estimator: A regressor for computing
+            the residuals for continuous X inputs.
         :param BaseEstimator binary_estimator: A classifier estimator for
             computing the residuals for binary X inputs.
         :param str binary_residual_type: The type of residual to use for binary
@@ -83,7 +85,7 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
         self.target_estimator = target_estimator
         self.continuous_estimator = continuous_estimator
         self.binary_estimator = binary_estimator
-        self.binary_residual_type = _BinaryResidualTypes[binary_residual_type]
+        self.binary_residual_type = binary_residual_type
 
     def fit(self, X, y, s):
         """Fit model."""
@@ -117,7 +119,7 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
                 estimator = clone(self.binary_estimator)
                 compute_residual_func = partial(
                     _compute_binary_residuals,
-                    residual_type=self.binary_residual_type)
+                    residual_type=self._binary_residual_type)
             else:
                 raise ValueError(
                     "index %s is not in continuous_index_ or binary_index_")
@@ -173,3 +175,7 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
         self._check_fitted(X)
         predict_residuals = self._compute_residuals_on_predict(X, s)
         return self.target_estimator_.predict_proba(predict_residuals)
+
+    @property
+    def _binary_residual_type(self):
+        return _BinaryResidualTypes[self.binary_residual_type]
