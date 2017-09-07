@@ -94,6 +94,9 @@ M.~T. Ribeiro, S.~Singh, and C.~Guestrin, ``Why should i trust you?: Explaining
   SIGKDD International Conference on Knowledge Discovery and Data Mining},
   pp.~1135--1144, ACM, 2016.
 
+\bibitem{fortmann2012understanding}
+S.~Fortmann-Roe, ``Understanding the bias-variance tradeoff,'' 2012.
+
 \bibitem{bischl2016mlr}
 B.~Bischl, M.~Lang, L.~Kotthoff, J.~Schiffner, J.~Richter, E.~Studerus,
   G.~Casalicchio, and Z.~M. Jones, ``mlr: Machine learning in r,'' {\em Journal
