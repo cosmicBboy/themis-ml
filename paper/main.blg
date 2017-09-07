@@ -4,36 +4,37 @@ The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
 Warning--empty journal in barocas2016big
-You've used 20 entries,
+Warning--empty journal in fortmann2012understanding
+You've used 21 entries,
             1876 wiz_defined-function locations,
-            599 strings with 7818 characters,
-and the built_in function-call counts, 5815 in all, are:
-= -- 558
-> -- 259
+            602 strings with 7902 characters,
+and the built_in function-call counts, 5945 in all, are:
+= -- 568
+> -- 263
 < -- 0
-+ -- 94
-- -- 74
-* -- 424
-:= -- 834
-add.period$ -- 21
-call.type$ -- 20
-change.case$ -- 19
++ -- 96
+- -- 75
+* -- 431
+:= -- 855
+add.period$ -- 22
+call.type$ -- 21
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 21
-duplicate$ -- 300
-empty$ -- 540
-format.name$ -- 74
-if$ -- 1400
+cite$ -- 23
+duplicate$ -- 309
+empty$ -- 557
+format.name$ -- 75
+if$ -- 1430
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 21
-newline$ -- 64
-num.names$ -- 20
-pop$ -- 72
+int.to.str$ -- 21
+missing$ -- 22
+newline$ -- 67
+num.names$ -- 21
+pop$ -- 78
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 191
+skip$ -- 192
 stack$ -- 0
 substring$ -- 391
 swap$ -- 119
@@ -41,8 +42,8 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 60
-width$ -- 22
-write$ -- 195
-(There was 1 warning)
+warning$ -- 2
+while$ -- 61
+width$ -- 23
+write$ -- 202
+(There were 2 warnings)

@@ -2,6 +2,7 @@
 \usepackage{etoolbox}
 \usepackage{graphicx}
 \usepackage{hanging}
+\usepackage{hyperref}
 \usepackage{mdframed}
 \usepackage{minted}
 \usepackage{subcaption}
@@ -62,7 +63,7 @@ Niels Bantilan\\
 \maketitle
 
 \begin{abstract}
-As more industries integrate machine learning into socially sensitive decisions
+As more industries integrate machine learning into socially sensitive decision
 processes like hiring, loan-approval, and parole-granting, we are at risk of
 perpetuating historical and contemporary socioeconomic disparities. This is a
 critical problem because on the one hand, organizations who use but do not
@@ -74,7 +75,7 @@ biases in socially sensitive data by expressing implicit decision-making mental
 models in terms of explicit statistical models. In this paper we specify,
 implement, and evaluate a ``fairness-aware'' machine learning interface called
 themis-ml, which is intended for use by individual data scientists and
-engineers, academic research teams, or larger product teams that use machine
+engineers, academic research teams, or larger product teams who use machine
 learning in production systems.
 \end{abstract}
 
@@ -103,34 +104,37 @@ various decision-making contexts \cite{yoshimura2006decision,
 montgomery2000evaluation, barnett1987dxplain, mysiak2005towards}. The misuse of
 ML in these types of systems could potentially precipitate a widespread adverse
 impact on society by introducing insidious feedback loops between biased
-historical data and current decision- making \cite{o2017weapons}.
+historical data and current decision-making \cite{o2017weapons}.
 
 Researchers have developed many discrimination discovery and fairness-aware ML
 methods \cite{kusner2017counterfactual, kamiran2012data, kamishima2012fairness,
 kamiran2012decision, zemel2013learning, zafar2017fairness, dwork2012fairness,
 zliobaite2015survey}, so we build on work done by others and seek to leverage
 these techniques in the context of research- and product-based machine learning
-applications. Our contributions in this paper are two-fold. First, we propose an
-application programming interface (API) for ``Fairness-aware Machine Learning
-Interfaces'' (FMLI) in the context of a simple binary classifier. Second, we
-introduce themis-ml, an FMLI-compliant library, and apply it to a hypothetical
-loan-granting DSS using the German Credit Dataset \cite{bache2013uci}. Our hope
-is that themis-ml serves as a reference implementation that others might use and
-extend for their own purposes.
+applications.
 
+Our contributions in this paper are three-fold. First, we propose an application
+programming interface (API) for ``Fairness-aware Machine Learning Interfaces''
+(FMLI) in the context of a simple binary classifier. Second, we introduce
+themis-ml, an FMLI-compliant library, and apply it to a hypothetical
+loan-granting DSS using the German Credit Dataset \cite{bache2013uci}. Finally, we
+evaluate the efficacy of themis-ml as a tool for measuring potential
+discrimination (PD) in both training data and ML predictions as well as
+mitigating PD using fairness-aware methods. Our hope is that themis-ml serves as
+a reference implementation that others might use and extend for their own
+purposes.
 
-%\newpage
 \section{Bias and Discrimination}
-Colloquially, bias is simply a preference for or against something, e.g.,
-preferring for vanilla over chocolate ice cream. While this definition is
+Colloquially, bias is simply a preference for or against something, e.g.
+preferring vanilla over chocolate ice cream. While this definition is
 intuitive, here we explicitly define algorithmic bias as a form of bias that
-occurs mathematical rules favors one set of attributes over others in relation
-to some target variable, like ``approve'' or ``deny'' a loan.
+occurs when mathematical rules favor one set of attributes over others in
+relation to some target variable, like ``approving'' or ``denying'' a loan.
 
 Algorithmic bias in machine learning models can occur when a trained model
 systematically generates predictions that favor one group over another in
-relation to some set of attributes, e.g., education, and some target variable,
-e.g., ``default on credit''. While the above definition of bias is amoral,
+relation to some set of attributes, e.g. education, and some target variable,
+e.g. ``default on credit''. While the definition above of bias is amoral,
 discrimination is in essence moral, occurring when an action is based on biases
 resulting in the unfair treatment of people. We define fairness as the inverse
 of discrimination, meaning that a ``fairness-aware'' model is one that produces
@@ -138,7 +142,7 @@ non-discriminatory predictions.
 
 Bias can lead to either direct (intended/explicit) or indirect
 (unintended/implicit) discrimination, and the predominant legal concepts used to
-determine these two types are known as disparate treatment and disparate impact
+determine these two types are known as disparate treatment and disparate impact,
 respectively \cite{barocas2016big}. As \cite{kusner2017counterfactual,
 kamiran2012data} suggest, we can address disparate treatment in ML models by
 simply removing all variables that are highly correlated to the protected class
@@ -151,7 +155,9 @@ the training data, non-linear relationships between the features and protected
 class, and whether we are interested in measuring individual- or group-level
 discrimination \cite{dwork2012fairness}.
 
-\section{A Fairness-aware Machine Learning Interface} So how does one measure
+\section{A Fairness-aware Machine Learning Interface}
+
+So how does one measure
 disparate impact and individual-/group-level discrimination in an ML-driven
 product? In this section, we describe the main components of a simple
 classification system, enumerate a few of the use cases that a research or
@@ -160,16 +166,16 @@ these use cases.
 
 A simple classification ML pipeline consists of five steps: data ingestion, data
 preprocessing, model training, model evaluation, and prediction generation on
-new e\(X_a\)mples. Data ingestion is outside the scope of this paper because it is a
+new examples. Data ingestion is outside the scope of this paper because it is a
 highly variable process that depends on the application, often involves
 considerable engineering effort, and potentially requires external stakeholder
-bu\(y^{-})\)in.
+buy-in.
 
-Table 1 below outlines a simple classification system in terms of the core
-interfaces in scikit-learn (sklearn), which is a machine learning library in the
-Python programming language \cite{buitinck2013api}, and Table 2 delineates some
-of the use cases that research or product teams might have to justify the use of
-an FMLI.
+Table 1 outlines a simple classification system in terms of the core interfaces
+in scikit-learn (sklearn), which is a machine learning library in the Python
+programming language \cite{buitinck2013api}, and table 2 delineates some of the
+use cases that research or product teams might have to justify the use of an
+FMLI.
 
 
 \begin{table}
@@ -194,9 +200,12 @@ an FMLI.
 \end{table}
 
 
-\section{FMLI Specification} Here we propose a high-level specification of
-themis-ml, an FMLI named after the ancient Greek titaness of justice. We adopt
-sklearn's principles of consistency, inspection, non-proliferation of classes,
+\section{FMLI Specification}
+
+Here we propose a high-level specification of themis-ml, an open source FMLI
+named after the ancient Greek titaness of justice (the library can be found on
+\href{https://github.com/cosmicBboy/themis-ml}{\underline{github}}.)  We adopt
+sklearn's principles of consistency, inspection, non- proliferation of classes,
 composition, and sensible defaults \cite{buitinck2013api}, and extend them with
 the following FMLI-specific principles:
 
@@ -251,73 +260,83 @@ citing the original sources for more implementation details. The following
 descriptions make two assumptions: (i) the positive target label \(y^{+}\)
 refers to a desirable outcome, e.g. ``approve loan'', and vice versa for the
 negative target label \(y^{-}\), and (ii) the protected class is a binary
-variable defined as \(s \in {d, a}\), where \(X_d\)  are members of the
+variable defined as \(s \in \{d, a\}\), where \(X_d\)  are members of the
 disadvantaged group and \(X_a\) are members of the advantaged group.
 
-Following these conventions, we define \(X_d\), \(y^{+}\) and \(X_d\), \(y^{-}\)
+Following these conventions, we define \(X_{d, y^{+}}\) and \(X_{d, y^{-}}\)
 as the set of observations of the disadvantaged group that are positively
-labelled and negatively labelled respectively. Similarly, \(X_a\), \(y^{+}\) and
-\(X_a\), \(y^{-}\)  are observations of the advantaged group that are positively
-and negatively labelled respectively.
+labelled and negatively labelled, respectively. Similarly, \(X_{a, y^{+}}\), and
+\(X_{a, y^{-}}\)  are observations of the advantaged group that are positively
+and negatively labelled, respectively.
 
 \subsection{Transformer} The main idea behind fairness-aware preprocessing is to
-take a dataset D consisting of a feature set \(X_train\), target labels
-\(y_train\), and protected class strain to output a modified dataset.
+take a dataset \(D\) consisting of a feature set \(X_{train}\), target labels
+\(y_{train}\), and protected class \(s_{train}\) to output a modified dataset.
 
-Massaging modifies ytrain by relabelling the target variables in such a way that
-``promotes'' members of the disadvantaged protected class (e.g. ``immigrant'')
-and ``demotes'' members of the advantaged class (e.g. ``citizen'')
-\cite{kamiran2012data}. A ranker model R (e.g. logistic regression) is trained
-on D and ranks are generated for all observations. Some of the top-ranked
-observations \(X_d\), \(y^{-}\)  are ``promoted'' to \(X_d\), \(y^{+}\) and some
-of the bottom-ranked observations \(X_a\), \(y^{+}\)  are ``demoted'' to
-\(X_a\), \(y^{-}\) such that the proportion of \(y^{+}\) are equal in both
-\(X_d\) and \(X_a\). One caveat is that this method is intrusive because it
-directly manipulates \(y\) such that it no longer reflects the original value
-found in the raw data.
+\emph{Relabelling}, also called \emph{Massaging}, modifies \(y_{train}\) by relabelling
+the target variables in such a way that ``promotes'' members of the
+disadvantaged protected class (e.g. ``immigrant'') and ``demotes'' members of
+the advantaged class (e.g. ``citizen'') \cite{kamiran2012data}. A ranker \(R\)
+(e.g. logistic regression) is trained on \(D\), and ranks are generated for
+all observations. Some of the top-ranked observations \(X_{d, y^{-}}\)  are
+``promoted'' to \(X_{d, y^{+}}\) and some of the bottom-ranked observations
+\(X_{a, y^{+}}\)  are ``demoted'' to \(X_{a, y^{-}}\) such that the proportion
+of \(y^{+}\) are equal in both \(X_d\) and \(X_a\). Two caveats of this method
+are that it is intrusive because it directly manipulates \(y\), and that it
+narrowly defines fairness as the uniform distribution of benefits between
+\(X_a\) and \(X_d\).
 
 \begin{minted}[mathescape,
                gobble=2,
                framesep=5mm,
                fontsize=\small]{python}
-  from themis_ml.preprocess import Massage
+  from themis_ml.preprocess import Relabeller
   from sklearn.linear_model import LogisticRegression
 
   # use logistic regression as the ranking algorithm
-  massager = Massage(ranker=LogisticRegression)
+  massager = Relabeller(ranker=LogisticRegression)
 
   # obtain a new set of labels
-  y = massager.fit_transform(X, y, s)
+  new_y = massager.fit_transform(X, y, s)
+
+  # train any model on new y labels
+  lr = LogisticRegression()
+  lr.fit(X, new_y)
 \end{minted}
 
-Reweighting takes a dataset D and assigns a weight to each observation using
-conditional probabilities based on target labels and protected class membership
-\cite{kamiran2012data}. In brief, large weights are assigned to \(X_d\),
-\(y^{+}\) and \(X_a\), \(y^{-}\) , while small weights are assigned to \(X_d\),
-\(y^{-}\) and \(X_a\), \(y^{+}\). The weights are then used as input to model
-types that support weighted observations, which points to the main limitation of
-this method, since not all classifiers can incorporate observation weights
-during the learning process.
+\emph{Reweighting} takes a dataset D and assigns a weight to each observation
+using conditional probabilities based on \(y\) and \(s\) \cite{kamiran2012data}.
+In brief, large weights are assigned to \(X_{d, y^{+}}\) and \(X_{a, y^{-}}\) ,
+while small weights are assigned to \(X_{d, y^{-}}\) and \(X_{a, y^{+}}\). The
+weights are then used as input to model types that support weighted sample
+observations --- which actually points to the main limitation of this method,
+since not all classifiers can incorporate observation weights during the
+learning process.
 
 \begin{minted}[mathescape,
                gobble=2,
                framesep=5mm,
                fontsize=\small]{python}
   from themis_ml.preprocess import Reweight
+  from sklearn.linear_model import LogisticRegression
 
   reweigher = Reweight()
 
   # obtain fairness-aware weights for each observation
   reweigher.fit(y, s)
-  weights = reweigher.transform(y, s)
+  fair_weights = reweigher.transform(y, s)
+
+  # train a LogisticRegression model with sample weights
+  lr = LogisticRegression()
+  lr.fit(X, y, weights=fair_weights)
 \end{minted}
 
-Sampling is composed of two methods: the first involves uniformly sampling n
-observations from each group, where n is the expected size of that group
-assuming a uniform distribution. The second is to preferentially sample
-observations using a ranker R, similar to the massaging method. The procedure is
-to duplicate the top-ranked \(X_d\), \(y^{+}\) and \(X_a\), \(y^{-}\) while
-removing top-ranked \(X_d\), \(y^{-}\) and \(X_a\), \(y^{+}\)
+\emph{Sampling} is composed of two methods: the first involves uniformly
+sampling n observations from each group, where n is the expected size of that
+group assuming a uniform distribution. The second is to preferentially sample
+observations using a ranker \(R\), similar to the \emph{Relabelling} method. The
+procedure is to duplicate the top-ranked \(X_{d, y^{+}}\) and \(X_{a, y^{-}}\)
+while removing top-ranked \(X_{d, y^{-}}\) and \(X_{a, y^{+}}\)
 \cite{kamiran2012data}.
 
 \begin{minted}[mathescape,
@@ -352,11 +371,12 @@ prejudice remover regularizer (PRR), and the additive counterfactually fair
 extends the standard L1/L2-norm regularization method \cite{ng2004feature,
 ribeiro2016should} by adding a prejudice index term to the objective function.
 This term is equivalent to normalized mutual information, which measures the
-degree to which predictions \(y\) and s are dependent on each other. With values
-ranging from 0 to 1, 0 means that \(y\) and s are independent and a value of 1
-means that they are dependent. The goal of the objective function is to find
-model parameters that minimize the difference between \(y\) and \(y\) in
-addition to the degree to which \(y\) depends on s.
+degree to which predictions \(y\) and \(s\) are dependent on each other. With
+values ranging from 0 to 1, 0 means that \(y\) and \(s\) are independent, and a
+value of 1 means that they are dependent. The goal of the objective function is
+to find model parameters that minimize the difference between the true label
+\(y\) and the predicted label \(\hat{y}\) in addition to the degree to which
+\(y\) depends on s.
 
 \begin{minted}[mathescape,
                gobble=2,
@@ -377,7 +397,7 @@ ACF is a method described by \cite{kusner2017counterfactual} within the
 framework of counterfactual fairness. The main idea is to train linear models to
 predict each feature using the protected class attribute(s) as input. We can
 then compute the residuals \(\epsilon_{ij}\) between the predicted feature
-values and true feature values for each observation i for each feature j. The
+values and true feature values for each observation i and each feature j. The
 final model is then trained on \(\epsilon_{ij}\) as features to predict y.
 
 \begin{minted}[mathescape,
@@ -398,22 +418,22 @@ final model is then trained on \(\epsilon_{ij}\) as features to predict y.
 
 \subsection{Predictor}
 
-Themis-ml draws on two methods to make model type-agnostic predictions: Reject
-Option Classification (ROC) and Discrimination Aware Ensemble Classification
-(DAEC) \cite{kamiran2012decision}. Unlike the Transformer and Estimator methods
-outlined above, ROC and DAEC do not modify the training data or the training
-process. Rather, they postprocess predictions in a way that reduces
-discriminatory predictions.
+Themis-ml draws on two methods to make model type-agnostic predictions:
+\emph{Reject Option Classification} (ROC) and \emph{Discrimination Aware
+Ensemble Classification} (DAEC) \cite{kamiran2012decision}. Unlike the
+Transformer and Estimator methods outlined above, ROC and DAEC do not modify the
+training data or the training process. Rather, they postprocess predictions in a
+way that reduces potentially discriminatory (PD) predictions.
 
 \cite{kamiran2012decision} describes two ways of implementing ROC, starting with
 ROC in a single classifier setting. ROC works by training an initial classifier
-on D, generating predicted probabilities on the test set, and then computing the
+on \(D\), generating predicted probabilities on the test set, and then computing the
 proximity of each prediction to the decision boundary learned by the classifier.
-Within the critical region threshold \(\theta\) around the decision boundary,
-where 0.5 < \(\theta\) < 1, \(X_d\) are assigned as \(y^{+}\) and \(X_a\) are
-assigned as \(y^{-}\). ROC in the multiple classifier setting is similar to the
-single classifier setting, except that predicted probabilities are defined as
-the weighted average of probabilities generated by each classifier.
+Within this boundary defined by the critical region threshold \(\theta\), where
+0.5 < \(\theta\) < 1, \(X_d\) are assigned as \(y^{+}\) and \(X_a\) are assigned
+as \(y^{-}\). ROC in the multiple classifier setting is similar to the single
+classifier setting, except that predicted probabilities are defined as the
+weighted average of probabilities generated by each classifier.
 
 \begin{minted}[mathescape,
                gobble=2,
@@ -469,20 +489,19 @@ between classifiers, the larger the reduction in discrimination.
 \subsection{Scorer}
 
 The Scorer interface is concerned with measuring the degree to which data or
-predictions are potentially discriminatory (PD). Themis-ml implements two
-methods for measuring group-level discrimination and two methods for measuring
-individual-level discrimination.
+predictions are PD. Themis-ml implements two methods for measuring group-level
+discrimination and two methods for measuring individual-level discrimination.
 
 In the context of measuring group-level discrimination,
-\cite{zliobaite2015survey} describes mean difference and normalized mean
-difference. Mean difference measures the difference between \(p(a \cup y^{+})\)
-and \(p(d \cup y^{+})\). Values range from -1 to 1, where -1 is the reverse-
-discrimination case (all \(X_a\) have \(y^{-}\) labels and all \(X_d\) members
-have \(y^{+}\) labels) and 1 is the fully discriminatory case (all \(X_a\) have
-\(y^{+}\) labels and all \(X_d\) have \(y^{-}\) labels). Normalized mean
-difference, which also takes on values between -1 and 1, scales these values
-based on the maximum possible discrimination in a dataset given the rate of
-positive label \cite{zliobaite2015survey}.
+\cite{zliobaite2015survey} describes \emph{mean difference} and \emph{normalized
+mean difference}. \emph{Mean difference} measures the difference between \(p(a
+\cup y^{+})\) and \(p(d \cup y^{+})\). Values range from -1 to 1, where -1 is
+the reverse-discrimination case (all \(X_a\) have \(y^{-}\) labels and all
+\(X_d\) have \(y^{+}\) labels) and 1 is the fully discriminatory case
+(all \(X_a\) have \(y^{+}\) labels and all \(X_d\) have \(y^{-}\) labels).
+\emph{Normalized mean difference}, which also takes on values between -1 and 1,
+scales these values based on the maximum possible discrimination in a dataset
+given the rate of positive labels \cite{zliobaite2015survey}.
 
 \begin{minted}[mathescape,
                gobble=2,
@@ -502,21 +521,21 @@ positive label \cite{zliobaite2015survey}.
   norm_md_y_pred - norm_md_y_true
 \end{minted}
 
-\cite{zliobaite2015survey} also describes consistency and situation test score
-as individual-level discrimination measures. Consistency measures the difference
-between the target label of a particular observation and target labels of its
-neighbors. K-nearest neighbors (knn) measures the pairwise distance between
-observations X. Then, for each observation \(x_i\) and each neighbor \(x_j \in
-knn(x_i)\), we compute the differences between \(y_i\) and target labels of
-neighbor \(y_i\). A consistency score of 0 indicates that there is no
-individual-level discrimination and a score of 1 indicates that there is maximum
-discrimination in the dataset.
+\cite{zliobaite2015survey} also describes \emph{consistency} and \emph{situation
+test score} as individual-level discrimination measures. \emph{Consistency}
+measures the difference between the target label of a particular observation and
+target labels of its neighbors. K-nearest neighbors (knn) measures the pairwise
+distance between observations X. Then, for each observation \(x_i\) and each
+neighbor \((x_j, y_j) \in knn(x_i)\), we compute the differences between \(y_i\)
+and target labels of neighbor \(y_j\). A consistency score of 0 indicates that
+there is no individual-level discrimination, and a score of 1 indicates that
+there is maximum discrimination in the dataset.
 
-The situation test score metric is similar to consistency, except we consider
-only \(x_i \in X_d\). This method uses mean difference to compute a
-discrimination score among neighbors \(x_j \in knn(x_i)\), producing a score
-between 0 and 1, where 0 indicates no discrimination and 1 indicates maximum
-discrimination \cite{zliobaite2015survey}.
+The \emph{situation test score} metric is similar to \emph{consistency}, except
+we consider only \(x_i \in X_d\). This method uses \emph{mean difference} to
+compute a discrimination score among neighbors \(x_j \in knn(x_i)\), producing a
+score between 0 and 1, where 0 indicates no discrimination, and 1 indicates
+maximum discrimination \cite{zliobaite2015survey}.
 
 \begin{minted}[mathescape,
                gobble=2,
@@ -538,43 +557,46 @@ discrimination \cite{zliobaite2015survey}.
 
 \section{Evaluating Themis-ml}
 
-In this section we use the German Credit dataset \cite{bache2013uci}, mean
-difference as the ``fairness'' measure, and area under the ROC curve (AUC) as
-the ``utility'' measure. The following analysis is by no means meant to be a
-comprehensive investigation of all of the possible workflows that themis-ml
-enables. Rather, it is intended to demonstrate the potential of themis-ml as a
-tool that facilites fairness-aware machine learning by enabling the user to:
+In this section we use the German Credit dataset \cite{bache2013uci} to evalute
+themis-ml. We use \emph{mean difference} as the ``fairness'' measure and the
+\emph{area under the curve} (AUC) as the ``utility'' measure. The former
+represents the degree to which PD patterns in \(D\) are learned by the ML model,
+and the latter represents the predictive power of a model given the available
+dataset \((X, y, s) \in D\). The following analysis is by no means meant to be a
+comprehensive investigation of all possible workflows that themis- ml enables.
+However, does demonstrate the potential of themis-ml as a tool that facilites
+fairness-aware machine learning by enabling the user to:
 
 \begin{enumerate}
-  \item measure PD target label distributions in the training data.
-  \item measure PD predictions in a machine learning algorithm's predictions.
-  \item reduce PD predictions using fairness-aware techniques.
-  \item diagnose the fairness-utility tradeoff in a particular data context.
+  \item Measure PD target label distributions in the training data.
+  \item Measure PD predicted labels in a machine learning algorithm's predictions.
+  \item Reduce PD predictions using fairness-aware techniques.
+  \item Diagnose the fairness-utility tradeoff in a particular data context.
 \end{enumerate}
 
 The German Credit dataset classifies 1000 anonymized individuals as having
 ``good'' and ``bad'' credit risks as part of a bank loan application, which we
-encode as (\(1\)) and (\(0\)) respectively to define the \emph{credit risk}
+encode as \(1\) and \(0\) respectively to define the \emph{credit risk}
 target variable.
 
 Each individual is associated with twenty attributes such as the purpose of the
 loan, employment status, and other personal information. We begin the analysis
 by extracting three protected class attributes --- \emph{female},
 \emph{foreign worker}, and \emph{age below 25} --- and encode them as binary
-variables such that the putatively disadvantaged group is encoded as \(1\) and
+variables such that the putatively disadvantaged group is encoded as \(1\), and
 the advantaged group is encoded as \(0\) (the advantaged group would be
-\emph{male}, \emph{citizen worker}, and \emph{age above 25} respectively).
+\emph{male}, \emph{citizen worker}, and \emph{age above 25}, respectively).
 
 Using the \textbf{Scorer} interface, we measure PD patterns with respect to
 \emph{credit risk} and each of the protected classes defined above using the
 \emph{mean difference} and \emph{normalized mean difference} metrics.
 
-\textbf{Table 3} shows the PD distribution of ``good'' and ``bad'' credit risks
-with respect to the protected attributes \emph{female}, \emph{foreign
-worker}, and \emph{age below 25}. The mean difference (md) and normalized mean
-difference (nmd) scores greater than zero suggests that the probability
-of being classified as having ``good'' risk is higher in the advantaged group
-than that of the disadvantaged group.
+\textbf{Table 3} reports the PD distribution of ``good'' and ``bad'' credit
+risks with respect to the protected attributes \emph{female}, \emph{foreign
+worker}, and \emph{age below 25}. The fact that both the \emph{mean difference}
+(md) and \emph{normalized mean difference} (nmd) scores are greater than zero
+suggests that the probability of being classified as having ``good'' risk is
+higher in the advantaged group than that of the disadvantaged group.
 
 \begin{table}
   \caption{Potentially discriminatory target variable distribution.
@@ -593,7 +615,7 @@ than that of the disadvantaged group.
 \subsection{Experimental Procedure}
 
 To assess the extent to which (i) a model trained on these data mirrors these PD
-\emph{credit risk} distributions and (ii) fairness-aware techniques can reduce
+\emph{credit risk} distributions, and (ii) fairness-aware techniques can reduce
 these methods, we used \emph{mean difference} to measure model fairness and
 \emph{AUC} to measure model utility. For this experiment we specify five
 conditions:
@@ -604,18 +626,19 @@ conditions:
   \item Remove Protected Attribute (\emph{RPA}): Train a model on input variables
         without protected attributes. This is the naive fairness-aware approach.
   \item Relabel Target Variable (\emph{RTV}): Train a model using the
-        \emph{relabelling} fairness-aware method.
+        \emph{Relabelling} fairness-aware method.
   \item Counterfactually Fair Model (\emph{CFM}): Train a model using the
-        \emph{additive counterfactually fair} method.
+        \emph{Additive Counterfactually Fair} method.
   \item Reject-option Classification (\emph{ROC}): Train a model using the
-        \emph{reject-option classification} method.
+        \emph{Reject-option Classification} method.
 \end{itemize}
 
 For each of these conditions, we train LogisticRegression, DecisionTree, and
-RandomForest model types using 10-fold cross validation, generate train and test
-predictions, and compute \emph{AUC} and \emph{mean difference} metrics for each
-train-test pair. We then compute the mean these metrics for each condition and
-model type.
+RandomForest model types using 10-fold cross validation; generate train and test
+predictions; and compute \emph{AUC} and \emph{mean difference} metrics for each
+train-test pair. We then compute the mean of these metrics for each condition and
+model type. The code for this analysis is available on
+\href{https://github.com/cosmicBboy/themis-ml/blob/master/paper/Evaluating%20Themis-ml.ipynb}{\underline{github}}.
 
 \subsection{Measuring and Mitigating Potentially Discriminatory Predictions}
 
@@ -624,107 +647,125 @@ model type.
 \includegraphics[width=8.5cm]{IMG/fairness_aware_comparison.png}
 \caption{
   \textbf{Comparison of Fairness-aware Methods} using LogisticRegression,
-  DecisionTree, and RandomForest as base estimators as measured by AUC and
-  mean difference evaluated on test set predictions.}
+  DecisionTree, and RandomForest (rows) as base estimators for each protected
+  attribute context (columns), measured by \emph{AUC} and
+  \emph{mean difference} evaluated on test set predictions.}
 \label{figure-1-comparison-fa-methods}
 \end{figure}
 
-\textbf{Figure 1} suggests that in the case of LogisticRegression, the baseline
-model \emph{B} does indeed mirror the PD patterns found in the true target
-variable. Furthermore, each of the fairness-aware method appear to have
-the desired effect of reducing \emph{mean difference}, but to variance degrees
-depending on the method and protected attribute. In the \emph{female} context,
-where there appear to be the least PD (mean difference of \(7.48\%\)), the
-reductive effect of the fairness-aware methods does not appear to be as
+Figure 1 suggests that in the case of LogisticRegression, the baseline model
+\emph{B} does indeed mirror the PD patterns found in the true target variable.
+Furthermore, each of the fairness-aware methods appear to have the desired
+effect of reducing \emph{mean difference}, but to varying degrees depending on
+the method and protected attribute. In the \emph{female} protected attribute
+context, where there appears to be the least PD (mean difference of \(7.48\%\)),
+the reductive effect of the fairness-aware methods do not appear to be as
 large as in the \emph{foreign worker} and \emph{age below 25} contexts.
 
-The lack of reduction in \emph{mean difference} between \emph{B} and \emph{RPA}
-with respect to the \emph{foreign worker} protected attribute and
-LogisticRegression model illustrates the observation made by
-\cite{kusner2017counterfactual} that removing protected attributes from the
-training data does not necessarly prevent the learning algorithm address from
-mirroring PD patterns in the data.
+The lack of reduction in \emph{mean difference} between \emph{B} and \emph{RPA},
+with respect to \emph{foreign worker} and LogisticRegression, illustrates the
+observation made by \cite{kusner2017counterfactual} that removing protected
+attributes from the training data does not necessarily prevent the algorithm
+from mirroring PD patterns in the data.
 
-However, as the sizeable reduction in \emph{mean difference} between \emph{B}
-and \emph{RPA} with respect to the \emph{age below 25} protected attribute and
-LogisticRegression model shows, removing protected attributes can make models
-more fair while also retaining predictive power.
+However, the sizeable reduction in \emph{mean difference} between \emph{B} and
+\emph{RPA}, with respect to \emph{age below 25} and LogisticRegression model,
+shows that removing protected attributes can sometimes make models more fair
+while also retaining predictive power.
 
-An interesting thing to note here is that the \emph{additive counterfactually
-fair} method actually increases \emph{mean difference} for DecisionTrees and
-RandomForests across all protected attribute contexts. A possible explanation
-behind this observation is that certain assumptions made by the \emph{additive
-counterfactually fair} method are not suitable for non-linear learning
-algorithms, but this is an open question worth future inquiry.
+An interesting thing to note here is that the \emph{Additive Counterfactually
+Fair} method actually increases \emph{mean difference} for DecisionTrees and
+RandomForests across all protected attribute contexts. Two possible explanations
+behind this observation is that certain assumptions made by \emph{ACF} are not
+suitable for non-linear learning algorithms, or the meta-estimators that compute
+the residuals for non-linear estimators should be non-linear as well. This
+is an open question worth future inquiry.
 
 \subsection{The Fairness-utility Tradeoff}
 
 Just as the bias-variance tradeoff has become a useful diagnostic tool to guide
-machine learning research and application, the fairness-utility tradeoff can
-help machine learning practitioners and researchers understand how effective
-particular fairness-aware methods might be in particular data contexts.
+ML research and application \cite{fortmann2012understanding}, the fairness-
+utility tradeoff can help machine learning practitioners and researchers
+determine which fairness-aware methods are suitable for their particular data
+context.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=8.5cm]{IMG/fairness_utility_tradeoff.png}
 \caption{
-  \textbf{Correlation between AUC and Mean Difference} for each experimental
-  condition, across all model types (LogisticRegression, DecisionTree,
-  RandomForest). 95\% confidence intervals are provided for the pearson \(R\)
-  correlation metric.
-  }
+  \textbf{Correlation between AUC and Mean Difference} for each fairness-aware
+  condition (rows) and protected attribute contexts (columns) across all model
+  types (LogisticRegression, DecisionTree,   RandomForest). 95\% confidence
+  intervals are provided for the pearson \(r\) correlation metric.}
 \label{figure-2-fairness-utility-tradeoff}
 \end{figure}
 
-\textbf{Figure 2} demonstrates an initial attempt at visualizing the the
-fairness-utility tradeoff, in this case as measured by \emph{mean difference}
-and \emph{AUC} respectively. These results suggest that the relationship between
-fairness and utility is noisy, however there does seem to be a positive
-correlation between \emph{mean difference} and \emph{AUC}, or a negative
-correlation between fairness and utility (since lower scores are better
-for \emph{mean difference} and higher scores are better for \emph{AUC}).
+In figure 2, we visualize the fairness-utility tradeoff, in this case as
+measured by \emph{mean difference} and \emph{AUC}, respectively. We report
+pearson correlation coefficients \(r\) for each protected attribute context and
+fairness-aware condition with their respective 95\% confidence intervals.
 
-Depending on one's use cases, analyses like this might be prove to be a useful
-guide for figuring out what kinds of methods are robust in the sense that
-one can reduce PD predictions with little to no adverse impact on predictive
-performance.
+These results suggest that the relationship between fairness and utility is
+noisy, however there does seem to be a consistent but weak positive correlation
+between \emph{mean difference} and \emph{AUC} (or a negative correlation between
+fairness and utility, since lower scores are better for \emph{mean difference}
+and higher scores are better for \emph{AUC}).
+
+Interestingly, we note the cases in which there are zero or negative \(r\)
+coefficient values. \(r = 0\) implies that there is no tradeoff between fairness
+and utility: one can expect to increase the utility of a set of models without
+adversely affecting the fairness of predictions generated by those models.
+Although there are no cases where \(r_{ci\ upper} < 0\), \(r < 0\) suggests that
+it might be plausible to find regimes in which one can expect to increase both
+the utility and fairness of a model. Future work in this area might examine the
+asymptotic behavior of the relationship between fairness and utility as model
+complexity increases.
+
+Depending on one's use cases, analyses like this might prove to be a useful
+guide for figuring out what kinds of methods are robust in the sense that one
+can reduce PD predictions with little to no adverse
+impact on predictive performance.
 
 \section{Discussion}
 
 In this paper, we describe and evaluate an FMLI in the classification context
 where we consider only a single binary protected class variable and a binary
-target variable. More work needs to be done to generalize FMLIs to the multi-
-classification, regression, and multiple protected classes contexts.
+target variable.
 
-Furthermore, many basic questions about model tuning, model evaluation, and
-model selection in relation to the fairness-utility tradeoff remain open. For
-instance, what might be some reasonable ways to aggregate utility and
-performance metrics in order to find the optimal set of hyperparameters?
-Additionally, little is understood about the question of the composability of
-fairness-aware methods. In other words, when different techniques are used
-together in sequence, are the resulting discrimination reductions additive or
-otherwise?
+More work needs to be done to generalize FMLIs to the multi-classification,
+regression, and multiple protected classes settings. Furthermore, many basic
+questions about model tuning, evaluation, and selection in the fairness-aware
+context remain. For instance, what might be some reasonable ways to aggregate
+utility and fairness metrics in order to find the optimal set of
+hyperparameters? Additionally, little is understood about the composability of
+fairness-aware methods, i.e., when different techniques are used together in
+sequence, are the resulting discrimination reductions additive or otherwise?
 
 Future technical work might also extend the FMLI specification to include
 techniques like Locally Interpretable Model-Agnostic Explanations
 \cite{ribeiro2016should} and develop legal frameworks for thinking about how
-different stakeholders would interact with FMLIs. Continued conversations among
-players in civil society, industry, academia, and government is needed to
-clearly articulate which parts of an FMLI should or should not be exposed to
-particular stakeholders and why. For example, the model-training components
-of the FMLI should not be accessible to external auditors for intellectual
-property reasons, but perhaps they might have limited access to the predictions
-generated by the models.
+different stakeholders would interact with FMLIs. For example, companies that
+choose not to expose the model-training components of their internal ML
+pipeline could still grant some form of access to the predictions generated by
+the models if there were to be a set of standards for model transparency and
+accountability.
 
-Finally, our ability to measure and mitigate discrimination is limited by our
-common social, legal, and political understanding of discrimination itself. This
-common understanding is often lacking because marginalized social groups
-typically do not have a voice at the table when defining what counts and does
-not count as discrimination. Therefore, we see the need for continued discussion
-around the meaning of discrimination in different contexts. Since FMLIs are
-simply a tool to measure and mitigate formalized definitions of discrimination,
-it is important for all stakeholders to engage in an inclusive forum where
-everyone, especially disadvantaged social groups, can contribute.
+Finally, many of the fairness-aware methods, such as the \emph{Relabeller},
+implicitly define fairness as the uniform (equal) distribution of benefits among
+disadvantaged and advantaged groups. Future work would make this definition more
+flexible, for example, by defining fairness as the proportional distribution of
+benefits based on need. This would necessitate the mathematical formalization of
+another set of assumptions about the needs of disadvantaged and advantaged
+groups.
+
+Given the challenges ahead, our ability to measure and mitigate discrimination
+is limited by our common social, legal, and political understanding of fairness
+itself. This common understanding is often lacking because marginalized social
+groups typically do not have a voice at the table when defining what counts as
+fair. Since FMLIs are simply a tool to measure and mitigate formalized
+definitions of discrimination, it is important for all stakeholders to engage in
+an inclusive forum where everyone, especially disadvantaged social groups, can
+contribute.
 
 \nocite{*}
 \bibliographystyle{ieeetr}
