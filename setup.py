@@ -7,7 +7,7 @@ setup(
     author="Niels Bantilan",
     author_email="niels.bantilan@gmail.com",
     url="https://github.com/cosmicBboy/themis-ml",
-    download_url="https://github.com/cosmicBboy/themis-ml/archive/0.0.1.tar.gz",
+    download_url="https://github.com/cosmicBboy/themis-ml/archive/0.0.2.tar.gz",
     keywords=["machine-learning", "fairness-aware", "social-bias"]
     packages=[
         "themis_ml",
