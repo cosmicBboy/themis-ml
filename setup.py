@@ -9,6 +9,7 @@ setup(
     url="https://github.com/cosmicBboy/themis-ml",
     download_url="https://github.com/cosmicBboy/themis-ml/archive/0.0.2.tar.gz",
     keywords=["machine-learning", "fairness-aware", "social-bias"],
+    license="MIT",
     packages=[
         "themis_ml",
         "themis_ml.datasets",
