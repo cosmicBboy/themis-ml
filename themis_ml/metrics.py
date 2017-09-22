@@ -1,13 +1,23 @@
 """Module for Fairness-aware scoring metrics."""
 
 import numpy as np
+import scipy
 
 from .checks import check_binary
 from math import sqrt
 from scipy.stats import t
 
+DEFAULT_CI = 0.975
 
-def mean_differences_ci(y, s, ci=0.975):
+
+def mean_confidence_interval(x, confidence=0.95):
+    a = np.array(x) * 1.0
+    mu, se = np.mean(a), scipy.stats.sem(a)
+    me = se * t._ppf((1 + confidence) / 2., len(a) - 1)
+    return mu, mu - me, mu + me
+
+
+def mean_differences_ci(y, s, ci=DEFAULT_CI):
     """Calculate the mean difference and confidence interval.
 
     :param array-like y: shape (n, ) containing binary target variable, where
@@ -70,7 +80,7 @@ def mean_difference(y, s):
     return mean_differences_ci(y, s)
 
 
-def normalized_mean_difference(y, s, norm_y=None):
+def normalized_mean_difference(y, s, norm_y=None, ci=DEFAULT_CI):
     """Compute normalized mean difference in y with respect to s.
 
     Same the mean difference score, except the score takes into account the
@@ -103,8 +113,9 @@ def normalized_mean_difference(y, s, norm_y=None):
         group.
     :param numpy.array|None norm_y: shape (n, ) or None. If provided, this
         array is used to compute the normalization factor d_max.
-    :returns: mean difference between advantaged group and disadvantaged group.
-    :rtype: float
+    :returns: mean difference between advantaged group and disadvantaged group
+        with lower and upper confidence interval bounds
+    :rtype: tuple(float)
     """
     y = check_binary(np.array(y).astype(int))
     s = check_binary(np.array(s).astype(int))
@@ -116,7 +127,11 @@ def normalized_mean_difference(y, s, norm_y=None):
     # TODO: Figure out if scaling the CI bounds by d_max makes sense here.
     if d_max == 0:
         return md
-    return (md[0] / d_max, md[1] / d_max, md[2] / d_max)
+    lower_ci = md[1] / d_max
+    lower_ci = lower_ci if lower_ci > -1 else -1
+    upper_ci = md[2] / d_max
+    upper_ci = upper_ci if upper_ci < 1 else 1
+    return (md[0] / d_max, lower_ci, upper_ci)
 
 
 def abs_mean_difference_delta(y, pred, s):
