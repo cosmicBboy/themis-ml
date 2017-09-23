@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.base import (
     BaseEstimator, ClassifierMixin, MetaEstimatorMixin, clone)
 from sklearn.utils.validation import check_array, check_X_y, check_is_fitted
-from checks import check_binary, s_is_needed_on_fit, s_is_needed_on_predict
+from .checks import check_binary, s_is_needed_on_fit, s_is_needed_on_predict
 
 
 class FairnessAwareMetaEstimator(

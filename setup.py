@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="themis-ml",
-    version="0.0.1",
+    version="0.0.2",
     description="Fairness-aware Machine Learning",
     author="Niels Bantilan",
     author_email="niels.bantilan@gmail.com",
@@ -17,4 +17,10 @@ setup(
         "themis_ml.postprocessing",
         "themis_ml.linear_model"
         ],
+    install_requires=[
+        "numpy",
+        "pandas",
+        "pathlib2",
+        "scikit-learn"
+        ]
     )
