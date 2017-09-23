@@ -10,10 +10,11 @@ Create a `themis-ml` development environment as follows:
 - `cd` into the `themis-ml` source directory
 
 Create a new virtual environment with conda
-(currently development in Python2.7 is supported):
+(currently development in Python 2.7 and 3.6 are supported):
 
 ```
-conda create -n themis_ml_dev python=2.7 --file environment_dev.yml
+# setting up
+conda create -n themis_ml_dev python=<version> --file environment_dev.yml
 
 # to update your current environment
 conda update -n themis_ml_dev --file environment_dev.yml
