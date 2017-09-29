@@ -17,7 +17,7 @@ Create a new virtual environment with conda
 conda create -n themis_ml_dev python=<version> --file environment_dev.yml
 
 # to update your current environment
-conda update -n themis_ml_dev --file environment_dev.yml
+conda env update -n themis_ml_dev --file environment_dev.yml
 ```
 
 To work in this environment, Mac OSX Linux users should:

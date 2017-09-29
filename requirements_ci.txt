@@ -4,3 +4,4 @@ pandas
 pathlib2
 pytest
 scikit-learn
+sphinx

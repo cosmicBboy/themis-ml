@@ -97,10 +97,8 @@ def normalized_mean_difference(y, s, norm_y=None, ci=DEFAULT_CI):
 
     Therefore the normalized mean difference will report a higher score than
     mean difference in two cases:
-    - if there are fewer positive examples than there are advantaged
-      observations.
-    - if there are fewer negative examples than there are disadvantaged
-      observations.
+    - if there are fewer positive examples than there are advantaged observations.
+    - if there are fewer negative examples than there are disadvantaged observations.
 
     Reference:
     Zliobaite, I. (2015). A survey on measuring indirect discrimination in
