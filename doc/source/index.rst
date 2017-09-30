@@ -34,9 +34,9 @@ loans among minorities is equal to the proportion of approved loans among white
 people.
 
 However, there are many other ways to define and operationalize fairness, and
-the purpose of **themis-ml** is to attempt to provide an interface use
-formalized definitions of fairness and discrimination in the machine learning
-and statistics literature. Check out this
+the purpose of **themis-ml** is to attempt to provide an interface that gives
+users with access to formalized definitions of fairness and discrimination
+described in the  the machine learning and statistics literature. Check out this
 `paper <https://github.com/cosmicBboy/themis-ml/blob/master/paper/main.pdf>`_
 for more details.
 
