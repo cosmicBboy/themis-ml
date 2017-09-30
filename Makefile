@@ -20,3 +20,6 @@ conda_build_py27:
 
 conda_build_py36:
 	conda-build --python=3.6 conda.recipe
+
+docs:
+	@cd doc && make html
