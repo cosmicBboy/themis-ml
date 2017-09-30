@@ -3,8 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-**themis-ml**: a library for fairness-aware machine learning
-============================================================
+.. image:: _static/themis-ml-banner.png
+
+---------------------------------------------
+
+A fairness-aware machine learning library
+=========================================
 
 **themis-ml** is an open source machine learning library that implements
 several fairness-aware methods that comply with the sklearn API.
@@ -39,7 +43,8 @@ for more details.
 Install
 =======
 
-You can install `themis-ml` with `conda` or `pip`
+You can install `themis-ml` with `conda` or `pip`. Currently only
+Python 2.7 and 3.6 are supported.
 
 .. code-block:: python
 
