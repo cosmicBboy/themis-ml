@@ -1,6 +1,7 @@
 # Themis ML
 
 [![Build Status](https://travis-ci.org/cosmicBboy/themis-ml.svg?branch=master)](https://travis-ci.org/cosmicBboy/themis-ml)
+[![Documentation Status](https://readthedocs.org/projects/themis-ml/badge/?version=latest)](http://themis-ml.readthedocs.io/en/latest/?badge=latest)
 
 `themis-ml` is a Python library built on top of `pandas` and `sklearn`that
 implements fairness-aware machine learning algorithms.
@@ -80,6 +81,10 @@ conda install themis-ml
 pip install themis-ml
 ```
 
+# Documentation
+
+Official documentation for this package can be found [here][docs]
+
 # References
 
 You can find a complete set of references for the discrimination discovery and
@@ -92,3 +97,4 @@ fairness-aware methods implemented in `themis-ml` in this [paper](paper/main.pdf
 [census-income]: https://archive.ics.uci.edu/ml/datasets/Census-Income+%28KDD%29
 [communities-crime]: https://archive.ics.uci.edu/ml/datasets/Communities+and+Crime
 [disabled-expenditure]: http://ww2.amstat.org/publications/jse/v22n1/mickel.pdf
+[docs]: http://themis-ml.readthedocs.io/en/latest/
