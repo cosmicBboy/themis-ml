@@ -40,6 +40,7 @@ def test_mean_difference_partial_reverse_discrimination():
     s = [0, 0, 0, 0, 1, 1, 1, 1]
     assert _get_point_est(metrics.mean_difference(y, s)) == -0.5
     assert _get_point_est(metrics.normalized_mean_difference(y, s)) == -1
+    import ipdb; ipdb.set_trace()
 
 
 def test_mean_difference_full_reverse_discrimination():

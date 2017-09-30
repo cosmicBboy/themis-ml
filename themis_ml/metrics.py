@@ -28,23 +28,30 @@ def mean_differences_ci(y, s, ci=DEFAULT_CI):
     :param float ci: % confidence interval to compute. Default: 97.5% to
         compute 95% two-sided t-statistic associated with degrees of freedom.
     :returns: mean difference between advantaged group and disadvantaged group
-        with lower and upper bound confidence interval estimates.
-    :rtype: tuple
+        with error margin.
+    :rtype: tuple[float]
     """
     n0 = (s == 0).sum().astype(float)
     n1 = (s == 1).sum().astype(float)
     df = n0 + n1 - 2
     std0 = y[s == 0].std()
     std1 = y[s == 1].std()
-    std_n0n1 = sqrt(((n1 - 1)*(std1)**2 + (n0 - 1)*(std0)**2) / df)
+    std_n0n1 = sqrt(((n1 - 1) * (std1) ** 2 + (n0 - 1) * (std0) ** 2) / df)
     mean_diff = y[s == 0].mean() - y[s == 1].mean()
-    margin_error = t.ppf(ci, df) * std_n0n1 * sqrt(1/n0 + 1 / float(n1))
-    return mean_diff, mean_diff - margin_error, mean_diff + margin_error
+    margin_error = t.ppf(ci, df) * std_n0n1 * \
+        sqrt(1 / float(n0) + 1 / float(n1))
+    return mean_diff, margin_error
 
 
-def _mean_difference(y, s):
-    """Compute mean difference."""
-    return np.mean(y[np.where(s == 0)]) - np.mean(y[np.where(s == 1)])
+def _bound_mean_difference_ci(lower_ci, upper_ci):
+    """Bound mean difference and normalized mean difference CI.
+
+    Since the plausible range of mean difference and normalized mean
+    difference is [-1, 1], bound the confidence interval to this range.
+    """
+    lower_ci = lower_ci if lower_ci > -1 else -1
+    upper_ci = upper_ci if upper_ci < 1 else 1
+    return lower_ci, upper_ci
 
 
 def mean_difference(y, s):
@@ -72,12 +79,15 @@ def mean_difference(y, s):
     :param numpy.array s: shape (n, ) containing binary protected class
         variable where 0 is the advantaged groupd and 1 is the disadvantaged
         group.
-    :returns: mean difference between advantaged group and disadvantaged group.
-    :rtype: float
+    :returns: mean difference between advantaged group and disadvantaged group
+        with lower and uppoer confidence interval bounds.
+    :rtype: tuple[float]
     """
     y = check_binary(np.array(y).astype(int))
     s = check_binary(np.array(s).astype(int))
-    return mean_differences_ci(y, s)
+    md, em = mean_differences_ci(y, s)
+    lower_ci, upper_ci = _bound_mean_difference_ci(md - em, md + em)
+    return md, lower_ci, upper_ci
 
 
 def normalized_mean_difference(y, s, norm_y=None, ci=DEFAULT_CI):
@@ -121,15 +131,13 @@ def normalized_mean_difference(y, s, norm_y=None, ci=DEFAULT_CI):
     d_max = float(
         min(np.mean(norm_y) / (1 - np.mean(s)),
             (1 - np.mean(norm_y)) / np.mean(s)))
-    md = mean_differences_ci(y, s)
+    md, em = mean_differences_ci(y, s)
     # TODO: Figure out if scaling the CI bounds by d_max makes sense here.
     if d_max == 0:
-        return md
-    lower_ci = md[1] / d_max
-    lower_ci = lower_ci if lower_ci > -1 else -1
-    upper_ci = md[2] / d_max
-    upper_ci = upper_ci if upper_ci < 1 else 1
-    return (md[0] / d_max, lower_ci, upper_ci)
+        return md, md - em, md + em
+    md = md / d_max
+    lower_ci, upper_ci = _bound_mean_difference_ci(md - em, md + em)
+    return md, lower_ci, upper_ci
 
 
 def abs_mean_difference_delta(y, pred, s):
