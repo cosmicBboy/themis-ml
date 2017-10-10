@@ -1,8 +1,7 @@
-from .datasets import german_credit
-from .german_credit_data_map import preprocess_german_credit_data
+from .datasets import german_credit, census_income
 
 
 __all__ = [
     "german_credit",
-    "preprocess_german_credit_data",
+    "census_income",
     ]
