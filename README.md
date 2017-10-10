@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/cosmicBboy/themis-ml.svg?branch=master)](https://travis-ci.org/cosmicBboy/themis-ml)
 [![Documentation Status](https://readthedocs.org/projects/themis-ml/badge/?version=latest)](http://themis-ml.readthedocs.io/en/latest/?badge=latest)
 
+<img src="static/themis-ml-logo.svg" width="100" height="100">
+
 `themis-ml` is a Python library built on top of `pandas` and `sklearn`that
 implements fairness-aware machine learning algorithms.
 
@@ -58,13 +60,13 @@ that this library implements.
 `themis-ml` also provides utility functions for loading freely available
 datasets from a variety of sources.
 
-- [X] German Credit Dataset [(source)][german-credit]
-- [ ] Taiwan Credit Default Dataset [(source)][taiwan-credit]
-- [ ] Australian Credit Approval Dataset [(source)][australian-credit]
-- [ ] Adult Census Dataset [(source)][adult-census]
-- [ ] Census Income Dataset [(source)][census-income]
-- [ ] Communities and Crime Dataset [(source)][communities-crime]
-- [ ] Disabled Residents Expenditure Dataset [(source)][disabled-expenditure]
+- [X] German Credit [(source)][german-credit]
+- [X] Census Income [(source)][census-income]
+- [ ] Taiwan Credit Default [(source)][taiwan-credit]
+- [ ] Australian Credit Approval [(source)][australian-credit]
+- [ ] Adult Census [(source)][adult-census]
+- [ ] Communities and Crime [(source)][communities-crime]
+- [ ] Disabled Residents Expenditure [(source)][disabled-expenditure]
 
 # Installation
 
