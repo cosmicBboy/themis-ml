@@ -15,11 +15,13 @@ class VariableType(enum.Enum):
 class Variable(object):
 
     def __init__(
-            self, name, variable_type, categorical_dict=None, is_target=False):
+            self, name, variable_type, transformer=None, is_target=False,
+            ignore=False):
         self.name = name
         self.variable_type = variable_type
-        self.categorical_dict = categorical_dict
+        self.transformer = transformer
         self.is_target = is_target
+        self.ignore = ignore
 
 
 class VariableMap(object):
@@ -30,6 +32,10 @@ class VariableMap(object):
         self._targets = targets if len(targets) > 0 else None
 
     @property
+    def all_variables(self):
+        return [v.name for v in self._variables]
+
+    @property
     def variable_map(self):
         return OrderedDict([(v.name, v) for v in self._variables])
 
@@ -37,7 +43,7 @@ class VariableMap(object):
         return [
             k for k, v in self.variable_map.items()
             if v.variable_type == variable_type
-            and not v.is_target]
+            and not v.is_target and not v.ignore]
 
     @property
     def binary_variables(self):
@@ -58,3 +64,12 @@ class VariableMap(object):
     @property
     def targets(self):
         return self._targets
+
+
+def string_cleaner(s):
+    """Function for cleaning raw string values.
+
+    :param str s: string to clean.
+    :returns: string, lowercased with spaces replaced with "_".
+    """
+    return s.strip().lower().replace(" ", "_")
