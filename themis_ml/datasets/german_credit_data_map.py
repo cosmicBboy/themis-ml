@@ -9,19 +9,19 @@ import pandas as pd
 from .data_types import VariableType, Variable, VariableMap
 
 # A categorical map for variables in the german credit dataset.
-# This map is an ordered dictionary where:
-# - keys are the column names
+# This map is an instance of the VariableMap class.
+# - Variables describe the name, variable type, and dictionary that maps
+#   non-human-readable codes to human-readable values.
 # - the index of the tuple is the ordering for each variable in the data file:
 #   https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data
-# - values are None if the variable is numeric or a dictionary if the variable
+# - the thir are None if the variable is numeric or a dictionary if the variable
 #   is categorical. This dictionary maps variable codes to human-readable
 #   values.
-GERMAN_CREDIT_TARGET = "credit_risk"
-GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
+german_credit_variable_map = VariableMap([
     Variable(
         "status_of_existing_checking_account",
         VariableType.ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A11": 1,  # "... < 0 DM"
             "A12": 2,  # "0 <= ... < 200 DM"
             "A13": 3,  # "... >= 200 DM / salary assignments for at least 1
@@ -32,7 +32,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "credit_history",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A30": "no_credits_taken/all_credits_paid_back_duly",
             "A31": "all_credits_at_this_bank_paid_back_duly",
             "A32": "existing_credits_paid_back_duly_till_now",
@@ -42,7 +42,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "purpose",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A40": "car_(new)",
             "A41": "car_(used)",
             "A42": "furniture/equipment",
@@ -59,7 +59,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "savings_account/bonds",
         VariableType.ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A61": 1,  # "... < 100 DM"
             "A62": 2,  # "100 <= ... < 500 DM"
             "A63": 3,  # "500 <= ... < 1000 DM"
@@ -69,7 +69,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "present_employment_since",
         VariableType.ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A71": 0,  # "unemployed"
             "A72": 1,  # "... < 1 year"
             "A73": 2,  # "1 <= ... < 4 years"
@@ -82,7 +82,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "personal_status_and_sex",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A91": "male_divorced/separated",
             "A92": "female_divorced/separated/married",
             "A93": "male_single",
@@ -92,7 +92,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "other_debtors/guarantors",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A101": "none",
             "A102": "co-applicant",
             "A103": "guarantor"
@@ -103,7 +103,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "property",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A121": "real_estate",
             "A122": "building_society_savings_agreement/life_insurance",
             "A123": "car_or_other",
@@ -113,7 +113,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "other_installment_plans",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A141": "bank",
             "A142": "stores",
             "A143": "none"
@@ -121,7 +121,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "housing",
         VariableType.NON_ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A151": "rent",
             "A152": "own",
             "A153": "for free"
@@ -130,7 +130,7 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "job",
         VariableType.ORDERED_CATEGORICAL,
-        {
+        transformer={
             "A171": 0,  # "unemployed/ unskilled - non-resident"
             "A172": 1,  # "unskilled - resident"
             "A173": 2,  # "skilled employee / official",
@@ -143,21 +143,21 @@ GERMAN_CREDIT_VARIABLE_MAP = VariableMap([
     Variable(
         "telephone",
         VariableType.BINARY,
-        {
+        transformer={
             "A191": 0,  # "none"
             "A192": 1,  # "yes, registered under the customers name"
         }),
     Variable(
         "foreign_worker",
         VariableType.BINARY,
-        {
+        transformer={
             "A201": 1,  # yes
             "A202": 0   # no
         }),
     Variable(
-        GERMAN_CREDIT_TARGET,
+        "credit_risk",
         VariableType.BINARY,
-        {
+        transformer={
             1: 1,  # good
             2: 0   # bad
         },
@@ -173,12 +173,11 @@ def preprocess_german_credit_data(df):
 
     This function converts all categorical variables into dummy variables.
     """
-    GERMAN_CREDIT_VARIABLE_MAP.non_ordered_categorical_variables
     return pd.concat([
-        df[GERMAN_CREDIT_VARIABLE_MAP.numeric_variables],
-        df[GERMAN_CREDIT_VARIABLE_MAP.ordered_categorical_variables],
-        df[GERMAN_CREDIT_VARIABLE_MAP.binary_variables],
+        df[german_credit_variable_map.numeric_variables],
+        df[german_credit_variable_map.ordered_categorical_variables],
+        df[german_credit_variable_map.binary_variables],
         pd.get_dummies(
-            df[GERMAN_CREDIT_VARIABLE_MAP.non_ordered_categorical_variables]),
-        df[GERMAN_CREDIT_VARIABLE_MAP.targets]
+            df[german_credit_variable_map.non_ordered_categorical_variables]),
+        df[german_credit_variable_map.targets]
     ], axis=1)

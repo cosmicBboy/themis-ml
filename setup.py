@@ -13,10 +13,18 @@ setup(
     packages=[
         "themis_ml",
         "themis_ml.datasets",
+        "themis_ml.linear_model",
         "themis_ml.preprocessing",
         "themis_ml.postprocessing",
-        "themis_ml.linear_model",
         ],
+    package_data={
+        "themis_ml": [
+            "datasets/data/german_credit.csv",
+            "datasets/data/census_income_1994_1995_train.csv",
+            "datasets/data/census_income_1994_1995_test.csv"
+        ]
+    },
+    include_package_data=True,
     install_requires=[
         "numpy",
         "pandas",
