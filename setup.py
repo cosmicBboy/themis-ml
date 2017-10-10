@@ -13,9 +13,9 @@ setup(
     packages=[
         "themis_ml",
         "themis_ml.datasets",
+        "themis_ml.linear_model",
         "themis_ml.preprocessing",
         "themis_ml.postprocessing",
-        "themis_ml.linear_model",
         ],
     install_requires=[
         "numpy",
