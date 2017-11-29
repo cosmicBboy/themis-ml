@@ -1,0 +1,14 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Bias and Discrimination}{}% 2
+\BOOKMARK [1][-]{section.3}{A Fairness-aware Machine Learning Interface}{}% 3
+\BOOKMARK [1][-]{section.4}{FMLI Specification}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Preliminaries}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Transformer}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Estimator}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Predictor}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.5}{Scorer}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Evaluating Themis-ml}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Experimental Procedure}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.2}{Measuring and Mitigating Potentially Discriminatory Predictions}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.3}{The Fairness-utility Tradeoff}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 14
