@@ -1,0 +1,614 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Bache%
+\ \BBA {} Lichman%
+}{%
+Bache%
+\ \BBA {} Lichman%
+}{%
+{\protect \APACyear {2013}}%
+}]{%
+bache2013uci}
+\APACinsertmetastar {%
+bache2013uci}%
+\begin{APACrefauthors}%
+Bache, K.%
+\BCBT {}\ \BBA {} Lichman, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {UCI Machine Learning Repository
+  [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School
+  of Information and Computer Science. Begleiter, H. Neurodynamics Laboratory.
+  State University of New York Health Center at Brooklyn. Ingber, L.(1997).
+  Statistical mechanics of neocortical interactions: Canonical momenta
+  indicatros of electroencephalography} {Uci machine learning repository
+  [http://archive.ics.uci.edu/ml]. irvine, ca: University of california, school
+  of information and computer science. begleiter, h. neurodynamics laboratory.
+  state university of new york health center at brooklyn. ingber, l.(1997).
+  statistical mechanics of neocortical interactions: Canonical momenta
+  indicatros of electroencephalography}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Physical Review E}{55}{}{4578--4593}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Barnett%
+, Cimino%
+, Hupp%
+\BCBL {}\ \BBA {} Hoffer%
+}{%
+Barnett%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1987}}%
+}]{%
+barnett1987dxplain}
+\APACinsertmetastar {%
+barnett1987dxplain}%
+\begin{APACrefauthors}%
+Barnett, G\BPBI O.%
+, Cimino, J\BPBI J.%
+, Hupp, J\BPBI A.%
+\BCBL {}\ \BBA {} Hoffer, E\BPBI P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1987}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {DXplain: an evolving diagnostic decision-support system}
+  {Dxplain: an evolving diagnostic decision-support system}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Jama}{258}{1}{67--74}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Barocas%
+\ \BBA {} Selbst%
+}{%
+Barocas%
+\ \BBA {} Selbst%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+barocas2016big}
+\APACinsertmetastar {%
+barocas2016big}%
+\begin{APACrefauthors}%
+Barocas, S.%
+\BCBT {}\ \BBA {} Selbst, A\BPBI D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Big data's disparate impact} {Big data's disparate
+  impact}.{\BBCQ}
+\newblock
+
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Buitinck%
+\ \protect \BOthers {.}}{%
+Buitinck%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+buitinck2013api}
+\APACinsertmetastar {%
+buitinck2013api}%
+\begin{APACrefauthors}%
+Buitinck, L.%
+, Louppe, G.%
+, Blondel, M.%
+, Pedregosa, F.%
+, Mueller, A.%
+, Grisel, O.%
+\BDBL {}others%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {API design for machine learning software: experiences
+  from the scikit-learn project} {Api design for machine learning software:
+  experiences from the scikit-learn project}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{arXiv preprint arXiv:1309.0238}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Dwork%
+, Hardt%
+, Pitassi%
+, Reingold%
+\BCBL {}\ \BBA {} Zemel%
+}{%
+Dwork%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+dwork2012fairness}
+\APACinsertmetastar {%
+dwork2012fairness}%
+\begin{APACrefauthors}%
+Dwork, C.%
+, Hardt, M.%
+, Pitassi, T.%
+, Reingold, O.%
+\BCBL {}\ \BBA {} Zemel, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Fairness through awareness} {Fairness through
+  awareness}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the 3rd Innovations in Theoretical
+  Computer Science Conference} {Proceedings of the 3rd innovations in
+  theoretical computer science conference}\ (\BPGS\ 214--226).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Fortmann-Roe%
+}{%
+Fortmann-Roe%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+fortmann2012understanding}
+\APACinsertmetastar {%
+fortmann2012understanding}%
+\begin{APACrefauthors}%
+Fortmann-Roe, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Understanding the bias-variance tradeoff} {Understanding
+  the bias-variance tradeoff}.{\BBCQ}
+\newblock
+
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kamiran%
+\ \BBA {} Calders%
+}{%
+Kamiran%
+\ \BBA {} Calders%
+}{%
+{\protect \APACyear {2012}}%
+}]{%
+kamiran2012data}
+\APACinsertmetastar {%
+kamiran2012data}%
+\begin{APACrefauthors}%
+Kamiran, F.%
+\BCBT {}\ \BBA {} Calders, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Data preprocessing techniques for classification without
+  discrimination} {Data preprocessing techniques for classification without
+  discrimination}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Knowledge and Information Systems}{33}{1}{1--33}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kamiran%
+, Karim%
+\BCBL {}\ \BBA {} Zhang%
+}{%
+Kamiran%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+kamiran2012decision}
+\APACinsertmetastar {%
+kamiran2012decision}%
+\begin{APACrefauthors}%
+Kamiran, F.%
+, Karim, A.%
+\BCBL {}\ \BBA {} Zhang, X.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Decision theory for discrimination-aware classification}
+  {Decision theory for discrimination-aware classification}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Data Mining (ICDM), 2012 IEEE 12th International
+  Conference on} {Data mining (icdm), 2012 ieee 12th international conference
+  on}\ (\BPGS\ 924--929).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kamishima%
+, Akaho%
+, Asoh%
+\BCBL {}\ \BBA {} Sakuma%
+}{%
+Kamishima%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+kamishima2012fairness}
+\APACinsertmetastar {%
+kamishima2012fairness}%
+\begin{APACrefauthors}%
+Kamishima, T.%
+, Akaho, S.%
+, Asoh, H.%
+\BCBL {}\ \BBA {} Sakuma, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Fairness-aware classifier with prejudice remover
+  regularizer} {Fairness-aware classifier with prejudice remover
+  regularizer}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Machine Learning and Knowledge Discovery in
+  Databases}{}{}{35--50}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Kusner%
+, Loftus%
+, Russell%
+\BCBL {}\ \BBA {} Silva%
+}{%
+Kusner%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+kusner2017counterfactual}
+\APACinsertmetastar {%
+kusner2017counterfactual}%
+\begin{APACrefauthors}%
+Kusner, M\BPBI J.%
+, Loftus, J\BPBI R.%
+, Russell, C.%
+\BCBL {}\ \BBA {} Silva, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Counterfactual Fairness} {Counterfactual
+  fairness}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{arXiv preprint arXiv:1703.06856}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Montgomery%
+, Fahey%
+, Peters%
+, MacIntosh%
+\BCBL {}\ \BBA {} Sharp%
+}{%
+Montgomery%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2000}}%
+}]{%
+montgomery2000evaluation}
+\APACinsertmetastar {%
+montgomery2000evaluation}%
+\begin{APACrefauthors}%
+Montgomery, A\BPBI A.%
+, Fahey, T.%
+, Peters, T\BPBI J.%
+, MacIntosh, C.%
+\BCBL {}\ \BBA {} Sharp, D\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Evaluation of computer based clinical decision support
+  system and risk chart for management of hypertension in primary care:
+  randomised controlled trial} {Evaluation of computer based clinical decision
+  support system and risk chart for management of hypertension in primary care:
+  randomised controlled trial}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Bmj}{320}{7236}{686--690}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Mysiak%
+, Giupponi%
+\BCBL {}\ \BBA {} Rosato%
+}{%
+Mysiak%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2005}}%
+}]{%
+mysiak2005towards}
+\APACinsertmetastar {%
+mysiak2005towards}%
+\begin{APACrefauthors}%
+Mysiak, J.%
+, Giupponi, C.%
+\BCBL {}\ \BBA {} Rosato, P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2005}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Towards the development of a decision support system for
+  water resource management} {Towards the development of a decision support
+  system for water resource management}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Environmental Modelling \& Software}{20}{2}{203--214}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ng%
+}{%
+Ng%
+}{%
+{\protect \APACyear {2004}}%
+}]{%
+ng2004feature}
+\APACinsertmetastar {%
+ng2004feature}%
+\begin{APACrefauthors}%
+Ng, A\BPBI Y.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2004}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Feature selection, L 1 vs. L 2 regularization, and
+  rotational invariance} {Feature selection, l 1 vs. l 2 regularization, and
+  rotational invariance}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the twenty-first international conference
+  on Machine learning} {Proceedings of the twenty-first international
+  conference on machine learning}\ (\BPG~78).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+O'Neil%
+}{%
+O'Neil%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+o2017weapons}
+\APACinsertmetastar {%
+o2017weapons}%
+\begin{APACrefauthors}%
+O'Neil, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2017}.
+\newblock
+\APACrefbtitle {Weapons of math destruction: How big data increases inequality
+  and threatens democracy} {Weapons of math destruction: How big data increases
+  inequality and threatens democracy}.
+\newblock
+\APACaddressPublisher{}{Broadway Books}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Park%
+\ \BBA {} Hastie%
+}{%
+Park%
+\ \BBA {} Hastie%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+park2007l1}
+\APACinsertmetastar {%
+park2007l1}%
+\begin{APACrefauthors}%
+Park, M\BPBI Y.%
+\BCBT {}\ \BBA {} Hastie, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {L1-regularization path algorithm for generalized linear
+  models} {L1-regularization path algorithm for generalized linear
+  models}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of the Royal Statistical Society: Series B
+  (Statistical Methodology)}{69}{4}{659--677}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Pedregosa%
+\ \protect \BOthers {.}}{%
+Pedregosa%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+scikit-learn}
+\APACinsertmetastar {%
+scikit-learn}%
+\begin{APACrefauthors}%
+Pedregosa, F.%
+, Varoquaux, G.%
+, Gramfort, A.%
+, Michel, V.%
+, Thirion, B.%
+, Grisel, O.%
+\BDBL {}Duchesnay, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Scikit-learn: Machine Learning in {P}ython}
+  {Scikit-learn: Machine learning in {P}ython}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Machine Learning
+  Research}{12}{}{2825--2830}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Ribeiro%
+, Singh%
+\BCBL {}\ \BBA {} Guestrin%
+}{%
+Ribeiro%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+ribeiro2016should}
+\APACinsertmetastar {%
+ribeiro2016should}%
+\begin{APACrefauthors}%
+Ribeiro, M\BPBI T.%
+, Singh, S.%
+\BCBL {}\ \BBA {} Guestrin, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Why should i trust you?: Explaining the predictions of
+  any classifier} {Why should i trust you?: Explaining the predictions of any
+  classifier}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the 22nd ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining} {Proceedings of the 22nd
+  acm sigkdd international conference on knowledge discovery and data mining}\
+  (\BPGS\ 1135--1144).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Yoshimura%
+, Fujimi%
+, Izui%
+\BCBL {}\ \BBA {} Nishiwaki%
+}{%
+Yoshimura%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2006}}%
+}]{%
+yoshimura2006decision}
+\APACinsertmetastar {%
+yoshimura2006decision}%
+\begin{APACrefauthors}%
+Yoshimura, M.%
+, Fujimi, Y.%
+, Izui, K.%
+\BCBL {}\ \BBA {} Nishiwaki, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2006}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Decision-making support system for human resource
+  allocation in product development projects} {Decision-making support system
+  for human resource allocation in product development projects}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{International Journal of Production
+  Research}{44}{5}{831--848}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Zafar%
+, Valera%
+, Gomez~Rodriguez%
+\BCBL {}\ \BBA {} Gummadi%
+}{%
+Zafar%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+zafar2017fairness}
+\APACinsertmetastar {%
+zafar2017fairness}%
+\begin{APACrefauthors}%
+Zafar, M\BPBI B.%
+, Valera, I.%
+, Gomez~Rodriguez, M.%
+\BCBL {}\ \BBA {} Gummadi, K\BPBI P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Fairness Constraints: Mechanisms for Fair
+  Classification} {Fairness constraints: Mechanisms for fair
+  classification}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{arXiv preprint arXiv:1507.05259}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Zemel%
+, Wu%
+, Swersky%
+, Pitassi%
+\BCBL {}\ \BBA {} Dwork%
+}{%
+Zemel%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+zemel2013learning}
+\APACinsertmetastar {%
+zemel2013learning}%
+\begin{APACrefauthors}%
+Zemel, R.%
+, Wu, Y.%
+, Swersky, K.%
+, Pitassi, T.%
+\BCBL {}\ \BBA {} Dwork, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Learning fair representations} {Learning fair
+  representations}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Proceedings of the 30th International Conference on
+  Machine Learning (ICML-13)} {Proceedings of the 30th international conference
+  on machine learning (icml-13)}\ (\BPGS\ 325--333).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Zliobaite%
+}{%
+Zliobaite%
+}{%
+{\protect \APACyear {2015}}%
+}]{%
+zliobaite2015survey}
+\APACinsertmetastar {%
+zliobaite2015survey}%
+\begin{APACrefauthors}%
+Zliobaite, I.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A survey on measuring indirect discrimination in machine
+  learning} {A survey on measuring indirect discrimination in machine
+  learning}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{arXiv preprint arXiv:1511.00148}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
