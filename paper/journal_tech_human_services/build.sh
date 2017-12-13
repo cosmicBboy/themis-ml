@@ -1,7 +1,5 @@
-pdflatex -shell-escape main_apa6
-bibtex main_apa6
-pdflatex -shell-escape main_apa6
-
-pdflatex -shell-escape main_interact
-bibtex main_interact
-pdflatex -shell-escape main_interact
+pdflatex -shell-escape -interaction nonstopmode main
+# pdflatex -shell-escape -interaction nonstopmode main_apa6
+# generate references then re-run pdf command
+bibtex main
+pdflatex -shell-escape -interaction nonstopmode main
