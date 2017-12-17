@@ -45,6 +45,28 @@ def test_fit_predict(random_X_data):
         assert min(lin_acf_pred_proba) > 0
 
 
+def test_binary_single_class(random_X_data):
+    """Linear ACF can handle training data with single-valued column."""
+    X = create_random_X(random_X_data)
+    X = np.concatenate([
+        X, np.ones((X.shape[0], 1))
+    ], axis=1)
+    s = create_s()
+    y = create_y()
+    lin_acf = counterfactually_fair_models.LinearACFClassifier()
+    for residual_type in ["pearson", "deviance", "absolute"]:
+        lin_acf = counterfactually_fair_models.LinearACFClassifier(
+            binary_residual_type=residual_type)
+        lin_acf.fit(X, y, s)
+        lin_acf_pred_proba = lin_acf.predict_proba(X, s)[:, 1]
+        assert(lin_acf.fit_residuals_ ==
+               lin_acf._compute_residuals_on_predict(X, s)).all()
+        assert is_binary(lin_acf.predict(X, s))
+        assert is_continuous(lin_acf_pred_proba)
+        assert max(lin_acf_pred_proba) < 1
+        assert min(lin_acf_pred_proba) > 0
+
+
 def test_predict_value_error(random_X_data):
     """Raise ValueError if X doesn't have expected number of variables."""
     X = create_random_X(random_X_data)

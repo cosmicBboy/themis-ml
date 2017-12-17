@@ -112,7 +112,11 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
 
         # fit residual estimators and compute residuals
         for i in range(self.n_input_variables_):
-            if i in continuous_index_set:
+            if i in binary_index_set and len(set(X[:, i])) == 1:
+                # if a binary variable only contains one of the classes
+                # in the training set, then no residual can be computed.
+                estimator, compute_residual_func = None, None
+            elif i in continuous_index_set:
                 estimator = clone(self.continuous_estimator)
                 compute_residual_func = _compute_absolute_residuals
             elif i in binary_index_set:
@@ -123,9 +127,13 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
             else:
                 raise ValueError(
                     "index %s is not in continuous_index_ or binary_index_")
-            estimator.fit(residual_input, X[:, i])
-            self.fit_residuals_[:, i] = compute_residual_func(
-                estimator, residual_input, X[:, i])
+            # fit residual estimator and compute residuals
+            if estimator and compute_residual_func:
+                estimator.fit(residual_input, X[:, i])
+                self.fit_residuals_[:, i] = compute_residual_func(
+                    estimator, residual_input, X[:, i])
+            else:
+                self.fit_residuals_[:, i] = 0
             self.compute_residual_funcs_.append(compute_residual_func)
             self.residual_estimators_.append(estimator)
 
@@ -138,8 +146,11 @@ class LinearACFClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
         residual_input = s.reshape(-1, 1)
         for i, (estimator, compute_residual_func) in enumerate(
                 zip(self.residual_estimators_, self.compute_residual_funcs_)):
-            predict_residuals[:, i] = compute_residual_func(
-                estimator, residual_input, X[:, i])
+            if estimator and compute_residual_func:
+                predict_residuals[:, i] = compute_residual_func(
+                    estimator, residual_input, X[:, i])
+            else:
+                predict_residuals[:, i] = self.fit_residuals_[:, i]
         return predict_residuals
 
     def _check_fitted(self, X):

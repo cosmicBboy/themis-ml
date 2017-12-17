@@ -23,7 +23,7 @@ def mean_differences_ci(y, s, ci=DEFAULT_CI):
     :param array-like y: shape (n, ) containing binary target variable, where
         1 is the desireable outcome and 0 is the undesireable outcome.
     :param array-like s: shape (n, ) containing binary protected class
-        variable where 0 is the advantaged groupd and 1 is the disadvantaged
+        variable where 0 is the advantaged group and 1 is the disadvantaged
         group.
     :param float ci: % confidence interval to compute. Default: 97.5% to
         compute 95% two-sided t-statistic associated with degrees of freedom.
@@ -107,8 +107,10 @@ def normalized_mean_difference(y, s, norm_y=None, ci=DEFAULT_CI):
 
     Therefore the normalized mean difference will report a higher score than
     mean difference in two cases:
-    - if there are fewer positive examples than there are advantaged observations.
-    - if there are fewer negative examples than there are disadvantaged observations.
+    - if there are fewer positive examples than there are advantaged
+      observations.
+    - if there are fewer negative examples than there are disadvantaged
+      observations.
 
     Reference:
     Zliobaite, I. (2015). A survey on measuring indirect discrimination in
