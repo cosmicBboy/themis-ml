@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="themis-ml",
-    version="0.0.2",
+    version="0.0.3",
     description="Fairness-aware Machine Learning",
     author="Niels Bantilan",
     author_email="niels.bantilan@gmail.com",
