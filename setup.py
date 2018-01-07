@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name="themis-ml",
@@ -26,9 +26,9 @@ setup(
     },
     include_package_data=True,
     install_requires=[
-        "numpy",
-        "pandas",
+        "scikit-learn >= 0.19.1",
+        "numpy >= 1.9.0",
+        "pandas >= 0.22.0",
         "pathlib2",
-        "scikit-learn"
         ]
     )
