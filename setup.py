@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="themis-ml",
-    version="0.0.3",
+    version="0.0.4",
     description="Fairness-aware Machine Learning",
     author="Niels Bantilan",
     author_email="niels.bantilan@gmail.com",
@@ -24,10 +24,10 @@ setup(
             "datasets/data/census_income_1994_1995_test.csv"
         ]
     },
-    include_package_data=True,
     install_requires=[
         "scikit-learn >= 0.19.1",
         "numpy >= 1.9.0",
+        "scipy >= 0.19.1",
         "pandas >= 0.22.0",
         "pathlib2",
         ]
