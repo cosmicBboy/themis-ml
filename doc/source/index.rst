@@ -49,7 +49,16 @@ Python 2.7 and 3.6 are supported.
 .. code-block:: python
 
     # conda
-    conda install themis-ml
+    conda install -c cosmicbboy themis-ml
+
+If you install with pip, you'll need to install scikit-learn, numpy, and pandas
+with either pip or conda. Version requirements:
+
+- numpy (>= 1.9.0)
+- scikit-learn (>= 0.19.1)
+- pandas (>= 0.22.0)
+
+.. code-block:: python
 
     # pip
     pip install themis-ml
