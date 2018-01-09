@@ -1,8 +1,12 @@
-@book{o2017weapons,
-  title={Weapons of math destruction: How big data increases inequality and threatens democracy},
-  author={O'Neil, Cathy},
-  year={2017},
-  publisher={Broadway Books}
+@book{o2016weapons,
+  title={Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy},
+  author={O'Neil, C.},
+  isbn={9780553418828},
+  lccn={2016016487},
+  url={https://books.google.com/books?id=NgEwCwAAQBAJ},
+  year={2016},
+  publisher={Crown/Archetype},
+  address = {New York, NY, USA},
 }
 
 @article{yoshimura2006decision,
@@ -50,10 +54,12 @@
 }
 
 @article{kusner2017counterfactual,
-  title={Counterfactual Fairness},
-  author={Kusner, Matt J and Loftus, Joshua R and Russell, Chris and Silva, Ricardo},
-  journal={arXiv preprint arXiv:1703.06856},
-  year={2017}
+  author={{Kusner}, M.~J. and {Loftus}, J.~R. and {Russell}, C. and {Silva}, R.},
+  title="{Counterfactual Fairness}",
+  journal={ArXiv e-prints arXiv:1703.06856},
+  url="https://arxiv.org/abs/1703.06856",
+  keywords={Statistics - Machine Learning, Computer Science - Computers and Society, Computer Science - Learning},
+  year=2017,
 }
 
 @article{kamiran2012data,
@@ -67,77 +73,135 @@
   publisher={Springer}
 }
 
-@article{kamishima2012fairness,
-  title={Fairness-aware classifier with prejudice remover regularizer},
-  author={Kamishima, Toshihiro and Akaho, Shotaro and Asoh, Hideki and Sakuma, Jun},
-  journal={Machine Learning and Knowledge Discovery in Databases},
-  pages={35--50},
-  year={2012},
-  publisher={Springer}
+@Inbook{kamishima2012fairness,
+  author="Kamishima, Toshihiro
+          and Akaho, Shotaro
+          and Asoh, Hideki
+          and Sakuma, Jun",
+  editor="Flach, Peter A.
+  and De Bie, Tijl
+  and Cristianini, Nello",
+  title="Fairness-Aware Classifier with Prejudice Remover Regularizer",
+  bookTitle="Machine Learning and Knowledge Discovery in Databases: European Conference, ECML PKDD 2012, Bristol, UK, September 24-28, 2012. Proceedings, Part II",
+  year="2012",
+  publisher="Springer Berlin Heidelberg",
+  address="Berlin, Heidelberg",
+  pages="35--50",
+  abstract="With the spread of data mining technologies and the accumulation of social data, such technologies and data are being used for determinations that seriously affect individuals' lives. For example, credit scoring is frequently determined based on the records of past credit data together with statistical prediction techniques. Needless to say, such determinations must be nondiscriminatory and fair in sensitive features, such as race, gender, religion, and so on. Several researchers have recently begun to attempt the development of analysis techniques that are aware of social fairness or discrimination. They have shown that simply avoiding the use of sensitive features is insufficient for eliminating biases in determinations, due to the indirect influence of sensitive information. In this paper, we first discuss three causes of unfairness in machine learning. We then propose a regularization approach that is applicable to any prediction algorithm with probabilistic discriminative models. We further apply this approach to logistic regression and empirically show its effectiveness and efficiency.",
+  isbn="978-3-642-33486-3",
+  doi="10.1007/978-3-642-33486-3_3",
+  url="https://doi.org/10.1007/978-3-642-33486-3_3"
 }
 
-@inproceedings{kamiran2012decision,
-  title={Decision theory for discrimination-aware classification},
-  author={Kamiran, Faisal and Karim, Asim and Zhang, Xiangliang},
-  booktitle={Data Mining (ICDM), 2012 IEEE 12th International Conference on},
-  pages={924--929},
+@INPROCEEDINGS{kamiran2012decision,
+  author={F. Kamiran and A. Karim and X. Zhang},
+  booktitle={2012 IEEE 12th International Conference on Data Mining},
+  title={Decision Theory for Discrimination-Aware Classification},
   year={2012},
-  organization={IEEE}
+  volume={},
+  number={},
+  pages={924-929},
+  keywords={data mining;decision theory;pattern classification;probability;data mining;decision theory;discrimination control;discrimination-aware classification;probabilistic classifier;sensitive attribute handling;social discrimination;Accuracy;Communities;Data mining;Decision trees;Logistics;Probabilistic logic;Standards;classification;decision theory;ensembles;social discrimination},
+  doi={10.1109/ICDM.2012.45},
+  ISSN={1550-4786},
+  month={Dec},
+  address="Brussels, Belgium",
 }
 
 @inproceedings{zemel2013learning,
-  title={Learning fair representations},
-  author={Zemel, Rich and Wu, Yu and Swersky, Kevin and Pitassi, Toni and Dwork, Cynthia},
-  booktitle={Proceedings of the 30th International Conference on Machine Learning (ICML-13)},
-  pages={325--333},
-  year={2013}
+  title =    {Learning Fair Representations},
+  author =   {Rich Zemel and Yu Wu and Kevin Swersky and Toni Pitassi and Cynthia Dwork},
+  booktitle =    {Proceedings of the 30th International Conference on Machine Learning},
+  pages =    {325--333},
+  year =   {2013},
+  editor =   {Sanjoy Dasgupta and David McAllester},
+  volume =   {28},
+  number =       {3},
+  series =   {Proceedings of Machine Learning Research},
+  address =    {Atlanta, Georgia, USA},
+  month =    {17--19 Jun},
+  publisher =    {PMLR},
+  pdf =    {http://proceedings.mlr.press/v28/zemel13.pdf},
+  url =    {http://proceedings.mlr.press/v28/zemel13.html},
+  abstract =   {We propose a learning algorithm for fair classification that achieves both group fairness (the proportion of members in a protected group receiving positive classification is identical to the proportion in the population as a  whole), and individual fairness (similar individuals should be treated similarly).  We formulate fairness as an optimization problem of finding a  good representation of the data with two competing goals: to encode the data as well as possible, while simultaneously obfuscating any information about membership in the protected group.  We show positive results of our algorithm relative to other known techniques, on three datasets.  Moreover, we demonstrate several advantages to our approach.  First, our intermediate representation can be used for other classification tasks (i.e., transfer  learning is possible); secondly, we take a step toward learning a distance metric which can find important dimensions of the data for classification.}
 }
 
 @article{zafar2017fairness,
   title={Fairness Constraints: Mechanisms for Fair Classification},
   author={Zafar, Muhammad Bilal and Valera, Isabel and Gomez Rodriguez, Manuel and Gummadi, Krishna P},
   journal={arXiv preprint arXiv:1507.05259},
-  year={2017}
+  year={2017},
+  url="https://arxiv.org/abs/1507.05259"
 }
 
-@inproceedings{dwork2012fairness,
-  title={Fairness through awareness},
-  author={Dwork, Cynthia and Hardt, Moritz and Pitassi, Toniann and Reingold, Omer and Zemel, Richard},
-  booktitle={Proceedings of the 3rd Innovations in Theoretical Computer Science Conference},
-  pages={214--226},
-  year={2012},
-  organization={ACM}
+@inproceedings{Dwork:2012:FTA:2090236.2090255,
+ author = {Dwork, Cynthia and Hardt, Moritz and Pitassi, Toniann and Reingold, Omer and Zemel, Richard},
+ title = {Fairness Through Awareness},
+ booktitle = {Proceedings of the 3rd Innovations in Theoretical Computer Science Conference},
+ series = {ITCS '12},
+ year = {2012},
+ isbn = {978-1-4503-1115-1},
+ location = {Cambridge, Massachusetts},
+ pages = {214--226},
+ numpages = {13},
+ url = {http://doi.acm.org/10.1145/2090236.2090255},
+ doi = {10.1145/2090236.2090255},
+ acmid = {2090255},
+ publisher = {ACM},
+ address = {New York, NY, USA},
 }
 
 @article{zliobaite2015survey,
   title={A survey on measuring indirect discrimination in machine learning},
   author={Zliobaite, Indre},
   journal={arXiv preprint arXiv:1511.00148},
-  year={2015}
+  year={2015},
+  url="https://arxiv.org/abs/1511.00148"
 }
 
-@article{bache2013uci,
-  title={UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science. Begleiter, H. Neurodynamics Laboratory. State University of New York Health Center at Brooklyn. Ingber, L.(1997). Statistical mechanics of neocortical interactions: Canonical momenta indicatros of electroencephalography},
-  author={Bache, K and Lichman, M},
-  journal={Physical Review E},
-  volume={55},
-  pages={4578--4593},
-  year={2013}
+@misc{Lichman:2013,
+  author="M. Lichman",
+  year="2013",
+  title="{UCI} Machine Learning Repository",
+  url="http://archive.ics.uci.edu/ml",
+  institution="University of California, Irvine, School of Information and Computer Sciences"
 }
 
 @article{barocas2016big,
   title={Big data's disparate impact},
   author={Barocas, Solon and Selbst, Andrew D},
-  year={2016}
+  year={2016},
+  journal={104 California Law Review 671 https://ssrn.com/abstract=2477899},
 }
 
-@article{buitinck2013api,
-  title={API design for machine learning software: experiences from the scikit-learn project},
-  author={Buitinck, Lars and Louppe, Gilles and Blondel, Mathieu and Pedregosa, Fabian and Mueller, Andreas and Grisel, Olivier and Niculae, Vlad and Prettenhofer, Peter and Gramfort, Alexandre and Grobler, Jaques and others},
-  journal={arXiv preprint arXiv:1309.0238},
-  year={2013}
+@article{DBLP:journals/corr/BuitinckLBPMGNPGGLVJHV13,
+  author    = {Lars Buitinck and
+               Gilles Louppe and
+               Mathieu Blondel and
+               Fabian Pedregosa and
+               Andreas Mueller and
+               Olivier Grisel and
+               Vlad Niculae and
+               Peter Prettenhofer and
+               Alexandre Gramfort and
+               Jaques Grobler and
+               Robert Layton and
+               Jake VanderPlas and
+               Arnaud Joly and
+               Brian Holt and
+               Ga{\"{e}}l Varoquaux},
+  title     = {{API} design for machine learning software: experiences from the scikit-learn
+               project},
+  journal   = {CoRR},
+  volume    = {abs/1309.0238},
+  year      = {2013},
+  url       = {http://arxiv.org/abs/1309.0238},
+  archivePrefix = {arXiv},
+  eprint    = {1309.0238},
+  timestamp = {Wed, 07 Jun 2017 14:40:21 +0200},
+  biburl    = {http://dblp.org/rec/bib/journals/corr/BuitinckLBPMGNPGGLVJHV13},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
 }
-
 @article{park2007l1,
   title={L1-regularization path algorithm for generalized linear models},
   author={Park, Mee Young and Hastie, Trevor},
@@ -150,27 +214,60 @@
 }
 
 @inproceedings{ng2004feature,
-  title={Feature selection, L 1 vs. L 2 regularization, and rotational invariance},
-  author={Ng, Andrew Y},
-  booktitle={Proceedings of the twenty-first international conference on Machine learning},
-  pages={78},
-  year={2004},
-  organization={ACM}
+ author = {Ng, Andrew Y.},
+ title = {Feature Selection, L1 vs. L2 Regularization, and Rotational Invariance},
+ booktitle = {Proceedings of the Twenty-first International Conference on Machine Learning},
+ series = {ICML '04},
+ year = {2004},
+ isbn = {1-58113-838-5},
+ location = {Banff, Alberta, Canada},
+ pages = {78--},
+ url = {http://doi.acm.org/10.1145/1015330.1015435},
+ doi = {10.1145/1015330.1015435},
+ acmid = {1015435},
+ publisher = {ACM},
+ address = {New York, NY, USA},
 }
 
 @inproceedings{ribeiro2016should,
-  title={Why should i trust you?: Explaining the predictions of any classifier},
-  author={Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
-  booktitle={Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
-  pages={1135--1144},
-  year={2016},
-  organization={ACM}
+  author = {Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
+  title = {"Why Should I Trust You?": Explaining the Predictions of Any Classifier},
+  booktitle = {Proceedings of the 22Nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  series = {KDD '16},
+  year = {2016},
+  isbn = {978-1-4503-4232-2},
+  location = {San Francisco, California, USA},
+  pages = {1135--1144},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/2939672.2939778},
+  doi = {10.1145/2939672.2939778},
+  acmid = {2939778},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  keywords = {black box classifier, explaining machine learning, interpretability, interpretable machine learning},
 }
 
-@article{fortmann2012understanding,
-  title={Understanding the bias-variance tradeoff},
-  author={Fortmann-Roe, Scott},
-  year={2012}
+
+@manual{fortmann2012understanding,
+    abstract = {When we discuss prediction models, prediction errors can be decomposed into two main subcomponents we care about: error due to "bias" and error due to "variance". There is a tradeoff between a model's ability to minimize bias and variance. Understanding these two types of error can help us diagnose model results and avoid the mistake of over- or under-fitting.},
+    author = {Fortmann-Roe, Scott},
+    citeulike-article-id = {13849984},
+    citeulike-linkout-0 = {http://mfkp.org/INRMM/article/13849984},
+    citeulike-linkout-1 = {http://www.webcitation.org/6dQKoNqXb},
+    citeulike-linkout-2 = {http://scott.fortmann-roe.com/docs/BiasVariance.html},
+    comment = {== Figures ==
+
+* Figure:   https://archive.today/z4cfl/34d619dd4750bd282e700da634d2b9ae6eb4a17b.png
+* Source:   http://scott.fortmann-roe.com/docs/BiasVariance.html
+* Archived: https://archive.is/z4cfl
+* Caption:  Bias and variance contributing to total error. [...] Understanding Over- and Under-Fitting. At its root, dealing with bias and variance is really about dealing with over- and under-fitting. Bias is reduced and variance is increased in relation to model complexity. As more and more parameters are added to a model, the complexity of the model rises and variance becomes our primary concern while bias steadily falls. For example, as more polynomial terms are added to a linear regression, the greater the resulting model's complexity will be. In other words, bias has a negative first-order derivative in response to model complexity while variance has a positive slope. [...]},
+    keywords = {data-uncertainty, featured-publication, modelling-uncertainty, overfitting, prediction, prediction-bias, trade-offs, uncertainty, underfitting},
+    posted-at = {2015-11-30 15:58:57},
+    priority = {2},
+    series = {Essays},
+    title = {Understanding the bias-variance tradeoff},
+    url = {http://mfkp.org/INRMM/article/13849984},
+    year = {2012}
 }
 
 @article{scikit-learn,

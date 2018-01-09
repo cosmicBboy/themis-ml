@@ -1,41 +1,6 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
-Bache%
-\ \BBA {} Lichman%
-}{%
-Bache%
-\ \BBA {} Lichman%
-}{%
-{\protect \APACyear {2013}}%
-}]{%
-bache2013uci}
-\APACinsertmetastar {%
-bache2013uci}%
-\begin{APACrefauthors}%
-Bache, K.%
-\BCBT {}\ \BBA {} Lichman, M.%
-\end{APACrefauthors}%
-\unskip\
-\newblock
-\APACrefYearMonthDay{2013}{}{}.
-\newblock
-{\BBOQ}\APACrefatitle {UCI Machine Learning Repository
-  [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School
-  of Information and Computer Science. Begleiter, H. Neurodynamics Laboratory.
-  State University of New York Health Center at Brooklyn. Ingber, L.(1997).
-  Statistical mechanics of neocortical interactions: Canonical momenta
-  indicatros of electroencephalography} {Uci machine learning repository
-  [http://archive.ics.uci.edu/ml]. irvine, ca: University of california, school
-  of information and computer science. begleiter, h. neurodynamics laboratory.
-  state university of new york health center at brooklyn. ingber, l.(1997).
-  statistical mechanics of neocortical interactions: Canonical momenta
-  indicatros of electroencephalography}.{\BBCQ}
-\newblock
-\APACjournalVolNumPages{Physical Review E}{55}{}{4578--4593}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem [\protect \citeauthoryear {%
 Barnett%
 , Cimino%
 , Hupp%
@@ -87,7 +52,8 @@ Barocas, S.%
 {\BBOQ}\APACrefatitle {Big data's disparate impact} {Big data's disparate
   impact}.{\BBCQ}
 \newblock
-
+\APACjournalVolNumPages{104 California Law Review 671
+  https://ssrn.com/abstract=2477899}{}{}{}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -97,9 +63,9 @@ Buitinck%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2013}}%
 }]{%
-buitinck2013api}
+DBLP:journals/corr/BuitinckLBPMGNPGGLVJHV13}
 \APACinsertmetastar {%
-buitinck2013api}%
+DBLP:journals/corr/BuitinckLBPMGNPGGLVJHV13}%
 \begin{APACrefauthors}%
 Buitinck, L.%
 , Louppe, G.%
@@ -107,17 +73,19 @@ Buitinck, L.%
 , Pedregosa, F.%
 , Mueller, A.%
 , Grisel, O.%
-\BDBL {}others%
+\BDBL {}Varoquaux, G.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
 \APACrefYearMonthDay{2013}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {API design for machine learning software: experiences
-  from the scikit-learn project} {Api design for machine learning software:
+{\BBOQ}\APACrefatitle {{API} design for machine learning software: experiences
+  from the scikit-learn project} {{API} design for machine learning software:
   experiences from the scikit-learn project}.{\BBCQ}
 \newblock
-\APACjournalVolNumPages{arXiv preprint arXiv:1309.0238}{}{}{}.
+\APACjournalVolNumPages{CoRR}{abs/1309.0238}{}{}.
+\newblock
+\begin{APACrefURL} \url{http://arxiv.org/abs/1309.0238} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -131,9 +99,9 @@ Dwork%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2012}}%
 }]{%
-dwork2012fairness}
+Dwork:2012:FTA:2090236.2090255}
 \APACinsertmetastar {%
-dwork2012fairness}%
+Dwork:2012:FTA:2090236.2090255}%
 \begin{APACrefauthors}%
 Dwork, C.%
 , Hardt, M.%
@@ -145,12 +113,19 @@ Dwork, C.%
 \newblock
 \APACrefYearMonthDay{2012}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Fairness through awareness} {Fairness through
+{\BBOQ}\APACrefatitle {Fairness Through Awareness} {Fairness through
   awareness}.{\BBCQ}
 \newblock
 \BIn{} \APACrefbtitle {Proceedings of the 3rd Innovations in Theoretical
   Computer Science Conference} {Proceedings of the 3rd innovations in
   theoretical computer science conference}\ (\BPGS\ 214--226).
+\newblock
+\APACaddressPublisher{New York, NY, USA}{ACM}.
+\newblock
+\begin{APACrefURL} \url{http://doi.acm.org/10.1145/2090236.2090255}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1145/2090236.2090255} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -171,9 +146,10 @@ Fortmann-Roe, S.%
 \APACrefYearMonthDay{2012}{}{}.
 \newblock
 {\BBOQ}\APACrefatitle {Understanding the bias-variance tradeoff} {Understanding
-  the bias-variance tradeoff}.{\BBCQ}
+  the bias-variance tradeoff}{\BBCQ}\ [\bibcomputersoftwaremanual].
 \newblock
-
+\begin{APACrefURL} \url{http://mfkp.org/INRMM/article/13849984}
+  \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -222,14 +198,17 @@ Kamiran, F.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2012}{}{}.
+\APACrefYearMonthDay{2012}{Dec}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Decision theory for discrimination-aware classification}
+{\BBOQ}\APACrefatitle {Decision Theory for Discrimination-Aware Classification}
   {Decision theory for discrimination-aware classification}.{\BBCQ}
 \newblock
-\BIn{} \APACrefbtitle {Data Mining (ICDM), 2012 IEEE 12th International
-  Conference on} {Data mining (icdm), 2012 ieee 12th international conference
-  on}\ (\BPGS\ 924--929).
+\BIn{} \APACrefbtitle {2012 IEEE 12th International Conference on Data Mining}
+  {2012 ieee 12th international conference on data mining}\ (\BPG~924-929).
+\newblock
+\APACaddressPublisher{Brussels, Belgium}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1109/ICDM.2012.45} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -255,21 +234,32 @@ Kamishima, T.%
 \newblock
 \APACrefYearMonthDay{2012}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Fairness-aware classifier with prejudice remover
-  regularizer} {Fairness-aware classifier with prejudice remover
+{\BBOQ}\APACrefatitle {Fairness-Aware Classifier with Prejudice Remover
+  Regularizer} {Fairness-aware classifier with prejudice remover
   regularizer}.{\BBCQ}
 \newblock
-\APACjournalVolNumPages{Machine Learning and Knowledge Discovery in
-  Databases}{}{}{35--50}.
+\BIn{} P\BPBI A.~Flach, T.~De~Bie\BCBL {}\ \BBA {} N.~Cristianini\ (\BEDS),
+  \APACrefbtitle {Machine Learning and Knowledge Discovery in Databases:
+  European Conference, ECML PKDD 2012, Bristol, UK, September 24-28, 2012.
+  Proceedings, Part II} {Machine learning and knowledge discovery in databases:
+  European conference, ecml pkdd 2012, bristol, uk, september 24-28, 2012.
+  proceedings, part ii}\ (\BPGS\ 35--50).
+\newblock
+\APACaddressPublisher{Berlin, Heidelberg}{Springer Berlin Heidelberg}.
+\newblock
+\begin{APACrefURL} \url{https://doi.org/10.1007/978-3-642-33486-3}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1007/978-3-642-33486-3} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Kusner%
-, Loftus%
-, Russell%
-\BCBL {}\ \BBA {} Silva%
+{Kusner}%
+, {Loftus}%
+, {Russell}%
+\BCBL {}\ \BBA {} {Silva}%
 }{%
-Kusner%
+{Kusner}%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {2017}}%
 }]{%
@@ -277,19 +267,44 @@ kusner2017counterfactual}
 \APACinsertmetastar {%
 kusner2017counterfactual}%
 \begin{APACrefauthors}%
-Kusner, M\BPBI J.%
-, Loftus, J\BPBI R.%
-, Russell, C.%
-\BCBL {}\ \BBA {} Silva, R.%
+{Kusner}, M\BPBI J.%
+, {Loftus}, J\BPBI R.%
+, {Russell}, C.%
+\BCBL {}\ \BBA {} {Silva}, R.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
 \APACrefYearMonthDay{2017}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Counterfactual Fairness} {Counterfactual
-  fairness}.{\BBCQ}
+{\BBOQ}\APACrefatitle {{Counterfactual Fairness}} {{Counterfactual
+  Fairness}}.{\BBCQ}
 \newblock
-\APACjournalVolNumPages{arXiv preprint arXiv:1703.06856}{}{}{}.
+\APACjournalVolNumPages{ArXiv e-prints arXiv:1703.06856}{}{}{}.
+\newblock
+\begin{APACrefURL} \url{https://arxiv.org/abs/1703.06856} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Lichman%
+}{%
+Lichman%
+}{%
+{\protect \APACyear {2013}}%
+}]{%
+Lichman:2013}
+\APACinsertmetastar {%
+Lichman:2013}%
+\begin{APACrefauthors}%
+Lichman, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+\APACrefbtitle {{UCI} Machine Learning Repository.} {{UCI} machine learning
+  repository.}
+\newblock
+\begin{APACrefURL} \url{http://archive.ics.uci.edu/ml} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -371,13 +386,20 @@ Ng, A\BPBI Y.%
 \newblock
 \APACrefYearMonthDay{2004}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Feature selection, L 1 vs. L 2 regularization, and
-  rotational invariance} {Feature selection, l 1 vs. l 2 regularization, and
+{\BBOQ}\APACrefatitle {Feature Selection, L1 vs. L2 Regularization, and
+  Rotational Invariance} {Feature selection, l1 vs. l2 regularization, and
   rotational invariance}.{\BBCQ}
 \newblock
-\BIn{} \APACrefbtitle {Proceedings of the twenty-first international conference
-  on Machine learning} {Proceedings of the twenty-first international
-  conference on machine learning}\ (\BPG~78).
+\BIn{} \APACrefbtitle {Proceedings of the Twenty-first International Conference
+  on Machine Learning} {Proceedings of the twenty-first international
+  conference on machine learning}\ (\BPGS\ 78--).
+\newblock
+\APACaddressPublisher{New York, NY, USA}{ACM}.
+\newblock
+\begin{APACrefURL} \url{http://doi.acm.org/10.1145/1015330.1015435}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1145/1015330.1015435} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -385,23 +407,26 @@ O'Neil%
 }{%
 O'Neil%
 }{%
-{\protect \APACyear {2017}}%
+{\protect \APACyear {2016}}%
 }]{%
-o2017weapons}
+o2016weapons}
 \APACinsertmetastar {%
-o2017weapons}%
+o2016weapons}%
 \begin{APACrefauthors}%
 O'Neil, C.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYear{2017}.
+\APACrefYear{2016}.
 \newblock
-\APACrefbtitle {Weapons of math destruction: How big data increases inequality
-  and threatens democracy} {Weapons of math destruction: How big data increases
+\APACrefbtitle {Weapons of Math Destruction: How Big Data Increases Inequality
+  and Threatens Democracy} {Weapons of math destruction: How big data increases
   inequality and threatens democracy}.
 \newblock
-\APACaddressPublisher{}{Broadway Books}.
+\APACaddressPublisher{New York, NY, USA}{Crown/Archetype}.
+\newblock
+\begin{APACrefURL} \url{https://books.google.com/books?id=NgEwCwAAQBAJ}
+  \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -483,14 +508,21 @@ Ribeiro, M\BPBI T.%
 \newblock
 \APACrefYearMonthDay{2016}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Why should i trust you?: Explaining the predictions of
-  any classifier} {Why should i trust you?: Explaining the predictions of any
+{\BBOQ}\APACrefatitle {"Why Should I Trust You?": Explaining the Predictions of
+  Any Classifier} {"why should i trust you?": Explaining the predictions of any
   classifier}.{\BBCQ}
 \newblock
-\BIn{} \APACrefbtitle {Proceedings of the 22nd ACM SIGKDD International
+\BIn{} \APACrefbtitle {Proceedings of the 22Nd ACM SIGKDD International
   Conference on Knowledge Discovery and Data Mining} {Proceedings of the 22nd
   acm sigkdd international conference on knowledge discovery and data mining}\
   (\BPGS\ 1135--1144).
+\newblock
+\APACaddressPublisher{New York, NY, USA}{ACM}.
+\newblock
+\begin{APACrefURL} \url{http://doi.acm.org/10.1145/2939672.2939778}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1145/2939672.2939778} \end{APACrefDOI}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -552,6 +584,8 @@ Zafar, M\BPBI B.%
   classification}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{arXiv preprint arXiv:1507.05259}{}{}{}.
+\newblock
+\begin{APACrefURL} \url{https://arxiv.org/abs/1507.05259} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -577,14 +611,20 @@ Zemel, R.%
 \end{APACrefauthors}%
 \unskip\
 \newblock
-\APACrefYearMonthDay{2013}{}{}.
+\APACrefYearMonthDay{2013}{17--19 Jun}{}.
 \newblock
-{\BBOQ}\APACrefatitle {Learning fair representations} {Learning fair
+{\BBOQ}\APACrefatitle {Learning Fair Representations} {Learning fair
   representations}.{\BBCQ}
 \newblock
-\BIn{} \APACrefbtitle {Proceedings of the 30th International Conference on
-  Machine Learning (ICML-13)} {Proceedings of the 30th international conference
-  on machine learning (icml-13)}\ (\BPGS\ 325--333).
+\BIn{} S.~Dasgupta\ \BBA {} D.~McAllester\ (\BEDS), \APACrefbtitle {Proceedings
+  of the 30th International Conference on Machine Learning} {Proceedings of the
+  30th international conference on machine learning}\ (\BVOL~28, \BPGS\
+  325--333).
+\newblock
+\APACaddressPublisher{Atlanta, Georgia, USA}{PMLR}.
+\newblock
+\begin{APACrefURL} \url{http://proceedings.mlr.press/v28/zemel13.html}
+  \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -609,6 +649,8 @@ Zliobaite, I.%
   learning}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{arXiv preprint arXiv:1511.00148}{}{}{}.
+\newblock
+\begin{APACrefURL} \url{https://arxiv.org/abs/1511.00148} \end{APACrefURL}
 \PrintBackRefs{\CurrentBib}
 
 \end{thebibliography}

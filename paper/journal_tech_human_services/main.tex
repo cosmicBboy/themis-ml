@@ -41,6 +41,8 @@
 % For the draft version
 \author{Niels Bantilan}
 \affiliation{Arena.io}
+\affiliation{New York, NY}
+\email{niels.bantilan@gmail.com}
 
 \abstract{
 As more industries integrate machine learning into socially sensitive decision
@@ -84,16 +86,16 @@ historical data and current decision-making \cite{o2017weapons}.
 
 Researchers have developed many discrimination discovery and fairness-aware ML
 methods (\citealp{kusner2017counterfactual, kamiran2012data, kamishima2012fairness,
-kamiran2012decision, zemel2013learning, zafar2017fairness, dwork2012fairness,
-zliobaite2015survey}), so we build on work done by others and seek to leverage
-these techniques in the context of research- and product-based machine learning
-applications.
+kamiran2012decision, zemel2013learning, zafar2017fairness,
+Dwork:2012:FTA:2090236.2090255, zliobaite2015survey}), so we build on work done
+by others and seek to leverage these techniques in the context of research- and
+product-based machine learning applications.
 
 Our contributions in this paper are three-fold. First, we propose an application
 programming interface (API) for ``Fairness-aware Machine Learning Interfaces''
 (FMLI) in the context of a simple binary classifier. Second, we introduce
 themis-ml, an FMLI-compliant library, and apply it to a hypothetical
-loan-granting DSS using the German Credit Dataset (\citealp{bache2013uci}). Finally, we
+loan-granting DSS using the German Credit Dataset (\citealp{Lichman:2013}). Finally, we
 evaluate the efficacy of themis-ml as a tool for measuring potential
 discrimination (PD) in both training data and ML predictions as well as
 mitigating PD using fairness-aware methods. Our hope is that themis-ml serves as
@@ -129,7 +131,7 @@ unfairness into an otherwise fair system. In contrast, addressing disparate
 impact is more complex because it depends on historical processes that generated
 the training data, non-linear relationships between the features and protected
 class, and whether we are interested in measuring individual- or group-level
-discrimination (\citealp{dwork2012fairness}).
+discrimination (\citealp{Dwork:2012:FTA:2090236.2090255}).
 
 \section{A Fairness-aware Machine Learning Interface}
 
@@ -347,14 +349,14 @@ prejudice remover regularizer (PRR), and the additive counterfactually fair
 
 \cite{kamishima2012fairness} proposes PRR as an optimization technique that
 extends the standard L1/L2-norm regularization method (\citealp{ng2004feature,
-ribeiro2016should}) by adding a ``prejudice index'' term to the objective function.
-This term is equivalent to normalized mutual information, which measures the
-degree to which predictions \(y\) and \(s\) are dependent on each other. With
-values ranging from 0 to 1, 0 means that \(y\) and \(s\) are independent, and a
-value of 1 means that they are dependent. The goal of the objective function is
-to find model parameters that minimize the difference between the true label
-\(y\) and the predicted label \(\hat{y}\) in addition to the degree to which
-\(y\) depends on s.
+ribeiro2016should, park2007l1}) by adding a ``prejudice index'' term to the
+objective function. This term is equivalent to normalized mutual information,
+which measures the degree to which predictions \(y\) and \(s\) are dependent on
+each other. With values ranging from 0 to 1, 0 means that \(y\) and \(s\) are
+independent, and a value of 1 means that they are dependent. The goal of the
+objective function is to find model parameters that minimize the difference
+between the true label \(y\) and the predicted label \(\hat{y}\) in addition to
+the degree to which \(y\) depends on s.
 
 \begin{minted}[mathescape,
                gobble=2,

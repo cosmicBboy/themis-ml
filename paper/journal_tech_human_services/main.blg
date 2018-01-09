@@ -12,48 +12,49 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
+Warning--I didn't find a database entry for "o2017weapons"
+Warning--I didn't find a database entry for "buitinck2013api"
+Warning--I didn't find a database entry for "bache2013uci"
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
-Warning--No journal in barocas2016big
-Warning--No journal in fortmann2012understanding
 You've used 21 entries,
             6951 wiz_defined-function locations,
-            1393 strings with 15207 characters,
-and the built_in function-call counts, 44679 in all, are:
-= -- 5498
-> -- 426
-< -- 2200
-+ -- 2274
-- -- 44
-* -- 2881
-:= -- 8137
-add.period$ -- 92
+            1431 strings with 16091 characters,
+and the built_in function-call counts, 44433 in all, are:
+= -- 5468
+> -- 436
+< -- 2023
++ -- 2116
+- -- 42
+* -- 2847
+:= -- 7695
+add.period$ -- 94
 call.type$ -- 21
-change.case$ -- 362
+change.case$ -- 367
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 1217
-empty$ -- 1651
-format.name$ -- 719
-if$ -- 8393
+cite$ -- 42
+duplicate$ -- 1320
+empty$ -- 1789
+format.name$ -- 724
+if$ -- 8525
 int.to.chr$ -- 0
 int.to.str$ -- 63
 missing$ -- 0
-newline$ -- 555
-num.names$ -- 168
-pop$ -- 761
+newline$ -- 594
+num.names$ -- 172
+pop$ -- 913
 preamble$ -- 1
-purify$ -- 84
+purify$ -- 88
 quote$ -- 0
-skip$ -- 2867
+skip$ -- 2794
 stack$ -- 0
-substring$ -- 2470
-swap$ -- 706
-text.length$ -- 70
+substring$ -- 2349
+swap$ -- 778
+text.length$ -- 85
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 2000
-warning$ -- 2
-while$ -- 245
+type$ -- 2064
+warning$ -- 0
+while$ -- 260
 width$ -- 0
-write$ -- 727
-(There were 2 warnings)
+write$ -- 762
+(There were 3 warnings)
