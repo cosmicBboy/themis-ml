@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/cosmicBboy/themis-ml.svg?branch=master)](https://travis-ci.org/cosmicBboy/themis-ml)
 [![Documentation Status](https://readthedocs.org/projects/themis-ml/badge/?version=latest)](http://themis-ml.readthedocs.io/en/latest/?badge=latest)
+[![Gitter](https://img.shields.io/gitter/room/DAVFoundation/DAV-Contributors.svg?style=flat-square)](https://gitter.im/themis-ml/Lobby)
 
 <img src="static/themis-ml-logo.svg" width="100" height="100">
 
